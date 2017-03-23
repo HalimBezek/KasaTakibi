@@ -29,29 +29,31 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.btnAddStock = new System.Windows.Forms.Button();
+            this.tbPieces = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tbBRAND = new System.Windows.Forms.TextBox();
+            this.tbCustomer = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.btnAddSale = new System.Windows.Forms.Button();
+            this.tbPrice = new System.Windows.Forms.TextBox();
+            this.tbSalePiece = new System.Windows.Forms.TextBox();
+            this.cbCinsi = new System.Windows.Forms.ComboBox();
+            this.cbType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbStockCode = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -59,8 +61,6 @@
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -72,16 +72,16 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.btnAddStock);
+            this.groupBox1.Controls.Add(this.tbPieces);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.tbCode);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.tbBRAND);
+            this.groupBox1.Controls.Add(this.tbCustomer);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.tbName);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Location = new System.Drawing.Point(19, 31);
             this.groupBox1.Name = "groupBox1";
@@ -90,21 +90,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "STOK KAYIT";
             // 
-            // button1
+            // btnAddStock
             // 
-            this.button1.Location = new System.Drawing.Point(883, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "KAYDET";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddStock.Location = new System.Drawing.Point(883, 53);
+            this.btnAddStock.Name = "btnAddStock";
+            this.btnAddStock.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStock.TabIndex = 4;
+            this.btnAddStock.Text = "KAYDET";
+            this.btnAddStock.UseVisualStyleBackColor = true;
+            this.btnAddStock.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox5
+            // tbPieces
             // 
-            this.textBox5.Location = new System.Drawing.Point(388, 56);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(59, 20);
-            this.textBox5.TabIndex = 3;
+            this.tbPieces.Location = new System.Drawing.Point(388, 56);
+            this.tbPieces.Name = "tbPieces";
+            this.tbPieces.Size = new System.Drawing.Size(59, 20);
+            this.tbPieces.TabIndex = 3;
             // 
             // label9
             // 
@@ -115,12 +116,12 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "ADET";
             // 
-            // textBox4
+            // tbCode
             // 
-            this.textBox4.Location = new System.Drawing.Point(197, 56);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(185, 20);
-            this.textBox4.TabIndex = 3;
+            this.tbCode.Location = new System.Drawing.Point(197, 56);
+            this.tbCode.Name = "tbCode";
+            this.tbCode.Size = new System.Drawing.Size(185, 20);
+            this.tbCode.TabIndex = 3;
             // 
             // label8
             // 
@@ -131,19 +132,19 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "ÜRÜN KODU";
             // 
-            // textBox8
+            // tbBRAND
             // 
-            this.textBox8.Location = new System.Drawing.Point(644, 56);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(185, 20);
-            this.textBox8.TabIndex = 3;
+            this.tbBRAND.Location = new System.Drawing.Point(644, 56);
+            this.tbBRAND.Name = "tbBRAND";
+            this.tbBRAND.Size = new System.Drawing.Size(185, 20);
+            this.tbBRAND.TabIndex = 3;
             // 
-            // textBox7
+            // tbCustomer
             // 
-            this.textBox7.Location = new System.Drawing.Point(453, 56);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(185, 20);
-            this.textBox7.TabIndex = 3;
+            this.tbCustomer.Location = new System.Drawing.Point(453, 56);
+            this.tbCustomer.Name = "tbCustomer";
+            this.tbCustomer.Size = new System.Drawing.Size(185, 20);
+            this.tbCustomer.TabIndex = 3;
             // 
             // label14
             // 
@@ -163,12 +164,12 @@
             this.label13.TabIndex = 1;
             this.label13.Text = "ÜRÜN ALINAN FİRMA/KİŞİ";
             // 
-            // textBox3
+            // tbName
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 56);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(185, 20);
-            this.textBox3.TabIndex = 3;
+            this.tbName.Location = new System.Drawing.Point(6, 56);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(185, 20);
+            this.tbName.TabIndex = 3;
             // 
             // label7
             // 
@@ -181,86 +182,88 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.btnAddSale);
+            this.groupBox2.Controls.Add(this.tbPrice);
+            this.groupBox2.Controls.Add(this.tbSalePiece);
+            this.groupBox2.Controls.Add(this.cbCinsi);
+            this.groupBox2.Controls.Add(this.cbType);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cbStockCode);
             this.groupBox2.Location = new System.Drawing.Point(20, 137);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(963, 85);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "GÜNLÜK SATIŞ";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // button2
+            // btnAddSale
             // 
-            this.button2.Location = new System.Drawing.Point(882, 55);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "KAYDET";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddSale.Location = new System.Drawing.Point(882, 55);
+            this.btnAddSale.Name = "btnAddSale";
+            this.btnAddSale.Size = new System.Drawing.Size(75, 23);
+            this.btnAddSale.TabIndex = 4;
+            this.btnAddSale.Text = "KAYDET";
+            this.btnAddSale.UseVisualStyleBackColor = true;
+            this.btnAddSale.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox2
+            // tbPrice
             // 
-            this.textBox2.Location = new System.Drawing.Point(235, 58);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(67, 20);
-            this.textBox2.TabIndex = 4;
+            this.tbPrice.Location = new System.Drawing.Point(265, 59);
+            this.tbPrice.Name = "tbPrice";
+            this.tbPrice.Size = new System.Drawing.Size(67, 20);
+            this.tbPrice.TabIndex = 4;
             // 
-            // textBox1
+            // tbSalePiece
             // 
-            this.textBox1.Location = new System.Drawing.Point(158, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(71, 20);
-            this.textBox1.TabIndex = 3;
+            this.tbSalePiece.Location = new System.Drawing.Point(158, 59);
+            this.tbSalePiece.Name = "tbSalePiece";
+            this.tbSalePiece.Size = new System.Drawing.Size(71, 20);
+            this.tbSalePiece.TabIndex = 3;
             // 
-            // comboBox2
+            // cbCinsi
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbCinsi.FormattingEnabled = true;
+            this.cbCinsi.Items.AddRange(new object[] {
             "TL",
             "$",
             "#"});
-            this.comboBox2.Location = new System.Drawing.Point(308, 58);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(43, 21);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.cbCinsi.Location = new System.Drawing.Point(338, 59);
+            this.cbCinsi.Name = "cbCinsi";
+            this.cbCinsi.Size = new System.Drawing.Size(43, 21);
+            this.cbCinsi.TabIndex = 2;
+            this.cbCinsi.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
-            // comboBox3
+            // cbType
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Items.AddRange(new object[] {
             "Nakit",
             "Kredi Kartı",
             "Vadeli",
             "Veresiye"});
-            this.comboBox3.Location = new System.Drawing.Point(357, 59);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(79, 21);
-            this.comboBox3.TabIndex = 2;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.cbType.Location = new System.Drawing.Point(452, 59);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(79, 21);
+            this.cbType.TabIndex = 2;
+            this.cbType.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(241, 33);
+            this.label4.Location = new System.Drawing.Point(271, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "FİYATI/CİNSİ";
+            this.label4.Text = "FİYATI   /   CİNSİ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(359, 33);
+            this.label3.Location = new System.Drawing.Point(454, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 1;
@@ -284,13 +287,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "SATILAN ÜRÜN KODU";
             // 
-            // comboBox1
+            // cbStockCode
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 58);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cbStockCode.FormattingEnabled = true;
+            this.cbStockCode.Location = new System.Drawing.Point(6, 58);
+            this.cbStockCode.Name = "cbStockCode";
+            this.cbStockCode.Size = new System.Drawing.Size(121, 21);
+            this.cbStockCode.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -309,6 +312,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ÖDEMELER";
             // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Vadeli",
+            "Veresiye"});
+            this.comboBox4.Location = new System.Drawing.Point(561, 62);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(79, 21);
+            this.comboBox4.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(563, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "ÖDEME TİPİ";
+            // 
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
@@ -317,8 +342,8 @@
             "YAPILAN ÖDEME"});
             this.checkedListBox1.Location = new System.Drawing.Point(6, 43);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 34);
-            this.checkedListBox1.TabIndex = 3;
+            this.checkedListBox1.Size = new System.Drawing.Size(228, 34);
+            this.checkedListBox1.TabIndex = 1;
             // 
             // button3
             // 
@@ -331,7 +356,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(153, 57);
+            this.textBox6.Location = new System.Drawing.Point(309, 60);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(112, 20);
             this.textBox6.TabIndex = 3;
@@ -339,11 +364,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(268, 32);
+            this.label12.Location = new System.Drawing.Point(424, 36);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(77, 13);
+            this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 1;
-            this.label12.Text = "ÖDEME CİNSİ";
+            this.label12.Text = "CİNSİ";
             // 
             // comboBox8
             // 
@@ -352,7 +377,7 @@
             "TL",
             "$",
             "#"});
-            this.comboBox8.Location = new System.Drawing.Point(285, 56);
+            this.comboBox8.Location = new System.Drawing.Point(427, 59);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(43, 21);
             this.comboBox8.TabIndex = 2;
@@ -361,7 +386,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(150, 32);
+            this.label11.Location = new System.Drawing.Point(306, 36);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(93, 13);
             this.label11.TabIndex = 1;
@@ -376,28 +401,6 @@
             this.button4.Text = "Kapat";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "Nakit",
-            "Kredi Kartı",
-            "Vadeli",
-            "Veresiye"});
-            this.comboBox4.Location = new System.Drawing.Point(349, 58);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(79, 21);
-            this.comboBox4.TabIndex = 6;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(351, 32);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "ÖDEME TİPİ";
             // 
             // button5
             // 
@@ -455,28 +458,28 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbStockCode;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbPrice;
+        private System.Windows.Forms.TextBox tbSalePiece;
+        private System.Windows.Forms.ComboBox cbCinsi;
+        private System.Windows.Forms.Button btnAddStock;
+        private System.Windows.Forms.TextBox tbPieces;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbCode;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbBRAND;
+        private System.Windows.Forms.TextBox tbCustomer;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddSale;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label12;
