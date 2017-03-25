@@ -63,6 +63,30 @@
     <Compile Include="AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="denemesql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="denemesql.Designer.cs">
+      <DependentUpon>denemesql.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaymentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaymentList.Designer.cs">
+      <DependentUpon>frmPaymentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalesList.Designer.cs">
+      <DependentUpon>frmSalesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockList.Designer.cs">
+      <DependentUpon>frmStockList.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +99,18 @@
     <Compile Include="SqlClass.cs" />
     <EmbeddedResource Include="AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="denemesql.resx">
+      <DependentUpon>denemesql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaymentList.resx">
+      <DependentUpon>frmPaymentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalesList.resx">
+      <DependentUpon>frmSalesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockList.resx">
+      <DependentUpon>frmStockList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

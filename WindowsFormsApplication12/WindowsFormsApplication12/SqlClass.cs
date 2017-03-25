@@ -15,7 +15,7 @@ namespace WindowsFormsApplication12
     public class SqlClass
     {
         MySqlConnection baglanti;
-
+        String DataListesi;
         public void ConnectSql()
         {
 
@@ -29,6 +29,35 @@ namespace WindowsFormsApplication12
 
             bag = build.ToString();
             baglanti = new MySqlConnection(bag);
+
+        }
+
+        public void ListData(DataGridView DataGridList)
+        {
+            if (DataGridList.Name == "dtgridSalesList")
+                DataListesi = "daily_sale";
+            else if (DataGridList.Name == "dtgrdStockList")
+                DataListesi = "stock_list";
+            else if (DataGridList.Name == "dtgridPaymentList")
+                DataListesi = "payments";
+            else DataListesi = "stock_list";
+
+            ConnectSql();
+            String sql = "SELECT * FROM " + DataListesi;
+            DataTable dt = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand();
+
+            command.CommandText = sql;
+            command.Connection = baglanti;
+            adapter.SelectCommand = command;
+
+            baglanti.Open();
+            adapter.Fill(dt);
+            DataGridList.DataSource = dt;
+            baglanti.Close();
+
 
         }
 
@@ -57,6 +86,24 @@ namespace WindowsFormsApplication12
 
             string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES) VALUES ('" + StockCode + "','" + Price +
                                                "','" + Type + "','" + Cinsi + "','" + SalePiece + "')";
+
+
+            MySqlCommand komut = new MySqlCommand(sql, baglanti);
+
+
+            komut.ExecuteNonQuery();
+            baglanti.Close();
+
+
+        }
+
+        public void AddPayment( String PaymentType, int PricePay, String Cinsi, String Type)
+        {
+            ConnectSql();
+            baglanti.Open();//ID	PAY_TYPE 1:ALINAN 2:YAPILAN ODEMELER	PAY_PRICE	PAY_CARNEL ODEME TIPI	ODEMECINSI ODEME CINSI 
+
+            string sql = "INSERT INTO payments (PAY_TYPE, PAY_PRICE, PAY_CARNEL, ODEMECINSI) VALUES ('" + PaymentType + "','" + PricePay +
+                                               "','" + Type + "','" + Cinsi + "')";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
