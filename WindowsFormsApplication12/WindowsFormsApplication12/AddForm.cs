@@ -198,5 +198,11 @@ namespace WindowsFormsApplication12
             MainForm frmMain = new MainForm();
             frmMain.Show();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            AddPerson frmPerson = new AddPerson();
+            frmPerson.Show();
+        }
     }
 }

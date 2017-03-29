@@ -24,3 +24,4 @@ C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplicatio
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.frmSalesList.resources
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.frmPaymentList.resources
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.denemesql.resources
+C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.AddPerson.resources
