@@ -47,6 +47,7 @@
             this.tbCode.Name = "tbCode";
             this.tbCode.Size = new System.Drawing.Size(185, 20);
             this.tbCode.TabIndex = 8;
+            this.tbCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCode_KeyPress);
             // 
             // label8
             // 
@@ -71,6 +72,7 @@
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Size = new System.Drawing.Size(185, 20);
             this.tbCustomer.TabIndex = 10;
+            this.tbCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCustomer_KeyPress);
             // 
             // label14
             // 
@@ -96,6 +98,7 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(185, 20);
             this.tbName.TabIndex = 11;
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             // 
             // label7
             // 

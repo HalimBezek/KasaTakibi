@@ -61,13 +61,13 @@ namespace WindowsFormsApplication12
 
         }
 
-        public void AddStock(String Name, String Code, int Pieces,String Customer,String BRAND)
+        public void AddStock(String Name, String Code, int Pieces,String Customer,int Price, String Cinsi)
         {
             ConnectSql();
             baglanti.Open();//	ID	NAME STOK ADI	CODE STOK KODU	PIECE KAÇ ADET	CUSTOMER KIM ALDI	BRAND URUN MARKASI
 
-            string sql = "INSERT INTO stock_list (NAME, CODE, PIECE, CUSTOMER, BRAND) VALUES ('" + Name + "','" + Code +
-                                               "','" + Pieces + "','" + Customer + "','" + BRAND + "')";
+            string sql = "INSERT INTO stock_list (NAME, CODE, PIECE, CUSTOMER, PRICE, ODEMECINSI) VALUES ('" + Name + "','" + Code +
+                                               "','" + Pieces + "','" + Customer + "','" + Price + "','" + Cinsi + "')";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -79,13 +79,13 @@ namespace WindowsFormsApplication12
 
         }
         //cbStockCode.Text, Convert.ToInt32(tbSalePiece.Text), Convert.ToInt32(tbPrice.Text), Convert.ToInt32(cbType.Text), cbCinsi.Text
-        public void AddSale(String StockCode, int SalePiece, int Price, String Type, String Cinsi)
+        public void AddSale(String StockCode, int SalePiece, int Price, String Type, String Cinsi, String Custumer)
         {
             ConnectSql();
             baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
 
-            string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES) VALUES ('" + StockCode + "','" + Price +
-                                               "','" + Type + "','" + Cinsi + "','" + SalePiece + "')";
+            string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER) VALUES ('" + StockCode + "','" + Price +
+                                               "','" + Type + "','" + Cinsi + "','" + SalePiece + "', '"+ Custumer +"')";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -97,13 +97,13 @@ namespace WindowsFormsApplication12
 
         }
 
-        public void AddPayment( String PaymentType, int PricePay, String Cinsi, String Type)
+        public void AddPayment( String PaymentType, int PricePay, String Cinsi, String Type, String Custumer)
         {
             ConnectSql();
             baglanti.Open();//ID	PAY_TYPE 1:ALINAN 2:YAPILAN ODEMELER	PAY_PRICE	PAY_CARNEL ODEME TIPI	ODEMECINSI ODEME CINSI 
 
-            string sql = "INSERT INTO payments (PAY_TYPE, PAY_PRICE, PAY_CARNEL, ODEMECINSI) VALUES ('" + PaymentType + "','" + PricePay +
-                                               "','" + Type + "','" + Cinsi + "')";
+            string sql = "INSERT INTO payments (PAY_TYPE, PAY_PRICE, PAY_CARNEL, ODEMECINSI,CUSTOMER) VALUES ('" + PaymentType + "','" + PricePay +
+                                               "','" + Type + "','" + Cinsi + "', '" + Custumer + "')";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);

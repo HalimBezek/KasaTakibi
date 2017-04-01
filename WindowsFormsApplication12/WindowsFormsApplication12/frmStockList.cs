@@ -29,6 +29,7 @@ namespace WindowsFormsApplication12
             dtgrdStockList.Columns[3].HeaderText = "Kaç Adet";
             dtgrdStockList.Columns[4].HeaderText = "Alan Firma/Kişi";
             dtgrdStockList.Columns[5].HeaderText = "Markası";
+            dtgrdStockList.Columns[6].HeaderText = "Ödeme Cinsi";
 
             dtgrdStockList.Columns[0].Visible = false;
             
@@ -37,6 +38,11 @@ namespace WindowsFormsApplication12
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dtgrdStockList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

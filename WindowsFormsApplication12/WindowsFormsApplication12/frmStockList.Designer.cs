@@ -50,6 +50,7 @@
             this.dtgrdStockList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dtgrdStockList.Size = new System.Drawing.Size(646, 348);
             this.dtgrdStockList.TabIndex = 0;
+            this.dtgrdStockList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdStockList_CellContentClick);
             // 
             // panel1
             // 

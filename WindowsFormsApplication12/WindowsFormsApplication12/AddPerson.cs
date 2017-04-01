@@ -21,5 +21,22 @@ namespace WindowsFormsApplication12
         {
             Close();
         }
+
+        private void tbName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+            && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void tbCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void tbCustomer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+           && !char.IsSeparator(e.KeyChar);
+        }
     }
 }

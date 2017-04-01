@@ -27,6 +27,7 @@ namespace WindowsFormsApplication12
             dtgridPaymentList.Columns[2].HeaderText = "Miktar";
             dtgridPaymentList.Columns[3].HeaderText = "Ödeme Tipi";
             dtgridPaymentList.Columns[4].HeaderText = "Ödeme Cinsi";
+            dtgridPaymentList.Columns[5].HeaderText = "Müşteri";
                       
             dtgridPaymentList.Columns[0].Visible = false;
         }

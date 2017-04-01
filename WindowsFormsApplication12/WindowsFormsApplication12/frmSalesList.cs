@@ -28,6 +28,7 @@ namespace WindowsFormsApplication12
             dtgridSalesList.Columns[3].HeaderText = "Ödeme Tipi";
             dtgridSalesList.Columns[4].HeaderText = "Ödeme Cinsi";
             dtgridSalesList.Columns[5].HeaderText = "Adet";
+            dtgridSalesList.Columns[6].HeaderText = "Müşteri";
 
             dtgridSalesList.Columns[0].Visible = false;
         }

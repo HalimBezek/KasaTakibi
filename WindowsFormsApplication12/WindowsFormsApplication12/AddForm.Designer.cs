@@ -29,25 +29,31 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tcPrices = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblSave = new System.Windows.Forms.Label();
             this.btnAddStock = new System.Windows.Forms.Button();
             this.tbPieces = new System.Windows.Forms.TextBox();
+            this.cbCinsi = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbBRAND = new System.Windows.Forms.TextBox();
             this.tbCustomer = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbCustomerOto = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbCustumerManuel = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cbSalePayType = new System.Windows.Forms.ComboBox();
             this.lblSave2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnAddSale = new System.Windows.Forms.Button();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbSalePiece = new System.Windows.Forms.TextBox();
-            this.cbCinsi = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +61,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbStockCode = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbCustumerOto2 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbCustumerManuel2 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.lblSave3 = new System.Windows.Forms.Label();
             this.cbTakePay = new System.Windows.Forms.CheckBox();
             this.cbGivePay = new System.Windows.Forms.CheckBox();
@@ -70,19 +80,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,7 +91,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tcPrices);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lblSave);
@@ -103,23 +101,47 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.tbCode);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.tbBRAND);
             this.groupBox1.Controls.Add(this.tbCustomer);
-            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.tbName);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Location = new System.Drawing.Point(19, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(964, 134);
+            this.groupBox1.Size = new System.Drawing.Size(964, 95);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "STOK KAYIT";
             // 
+            // tcPrices
+            // 
+            this.tcPrices.Location = new System.Drawing.Point(664, 56);
+            this.tcPrices.Name = "tcPrices";
+            this.tcPrices.Size = new System.Drawing.Size(59, 20);
+            this.tcPrices.TabIndex = 7;
+            this.tcPrices.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tcPrices_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(741, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "CİNSİ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(661, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "ÜRÜN FİYATI";
+            // 
             // lblSave
             // 
             this.lblSave.AutoSize = true;
-            this.lblSave.Location = new System.Drawing.Point(880, 63);
+            this.lblSave.Location = new System.Drawing.Point(886, 37);
             this.lblSave.Name = "lblSave";
             this.lblSave.Size = new System.Drawing.Size(64, 13);
             this.lblSave.TabIndex = 5;
@@ -129,7 +151,7 @@
             // btnAddStock
             // 
             this.btnAddStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddStock.Location = new System.Drawing.Point(883, 92);
+            this.btnAddStock.Location = new System.Drawing.Point(883, 53);
             this.btnAddStock.Name = "btnAddStock";
             this.btnAddStock.Size = new System.Drawing.Size(75, 36);
             this.btnAddStock.TabIndex = 4;
@@ -139,17 +161,30 @@
             // 
             // tbPieces
             // 
-            this.tbPieces.Location = new System.Drawing.Point(470, 101);
+            this.tbPieces.Location = new System.Drawing.Point(797, 56);
             this.tbPieces.Name = "tbPieces";
             this.tbPieces.Size = new System.Drawing.Size(59, 20);
             this.tbPieces.TabIndex = 3;
             this.tbPieces.TextChanged += new System.EventHandler(this.tbPieces_TextChanged);
             this.tbPieces.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPieces_KeyPress_1);
             // 
+            // cbCinsi
+            // 
+            this.cbCinsi.FormattingEnabled = true;
+            this.cbCinsi.Items.AddRange(new object[] {
+            "TL",
+            "$",
+            "#"});
+            this.cbCinsi.Location = new System.Drawing.Point(742, 55);
+            this.cbCinsi.Name = "cbCinsi";
+            this.cbCinsi.Size = new System.Drawing.Size(43, 21);
+            this.cbCinsi.TabIndex = 2;
+            this.cbCinsi.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(472, 85);
+            this.label9.Location = new System.Drawing.Point(799, 40);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 1;
@@ -157,7 +192,7 @@
             // 
             // tbCode
             // 
-            this.tbCode.Location = new System.Drawing.Point(39, 101);
+            this.tbCode.Location = new System.Drawing.Point(257, 56);
             this.tbCode.Name = "tbCode";
             this.tbCode.Size = new System.Drawing.Size(185, 20);
             this.tbCode.TabIndex = 3;
@@ -166,40 +201,24 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 85);
+            this.label8.Location = new System.Drawing.Point(258, 40);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 13);
             this.label8.TabIndex = 1;
             this.label8.Text = "ÜRÜN KODU";
             // 
-            // tbBRAND
-            // 
-            this.tbBRAND.Location = new System.Drawing.Point(253, 101);
-            this.tbBRAND.Name = "tbBRAND";
-            this.tbBRAND.Size = new System.Drawing.Size(185, 20);
-            this.tbBRAND.TabIndex = 3;
-            // 
             // tbCustomer
             // 
-            this.tbCustomer.Location = new System.Drawing.Point(253, 56);
+            this.tbCustomer.Location = new System.Drawing.Point(470, 56);
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.Size = new System.Drawing.Size(185, 20);
             this.tbCustomer.TabIndex = 3;
             this.tbCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCustomer_KeyPress);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(255, 82);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(93, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "ÜRÜN MARKASI ";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(255, 37);
+            this.label13.Location = new System.Drawing.Point(472, 40);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(142, 13);
             this.label13.TabIndex = 1;
@@ -211,6 +230,7 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(185, 20);
             this.tbName.TabIndex = 3;
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             // 
             // label7
             // 
@@ -225,12 +245,12 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.cbCustomerOto);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.tbCustumerManuel);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cbSalePayType);
             this.groupBox2.Controls.Add(this.lblSave2);
             this.groupBox2.Controls.Add(this.btnAddSale);
             this.groupBox2.Controls.Add(this.tbPrice);
@@ -241,15 +261,76 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbStockCode);
-            this.groupBox2.Location = new System.Drawing.Point(19, 171);
+            this.groupBox2.Location = new System.Drawing.Point(19, 150);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(964, 85);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "GÜNLÜK SATIŞ";
             // 
+            // cbCustomerOto
+            // 
+            this.cbCustomerOto.FormattingEnabled = true;
+            this.cbCustomerOto.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Vadeli",
+            "Veresiye"});
+            this.cbCustomerOto.Location = new System.Drawing.Point(732, 56);
+            this.cbCustomerOto.Name = "cbCustomerOto";
+            this.cbCustomerOto.Size = new System.Drawing.Size(107, 21);
+            this.cbCustomerOto.TabIndex = 12;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(729, 31);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(57, 13);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "ALICI SEÇ";
+            // 
+            // tbCustumerManuel
+            // 
+            this.tbCustumerManuel.Location = new System.Drawing.Point(585, 57);
+            this.tbCustumerManuel.Name = "tbCustumerManuel";
+            this.tbCustumerManuel.Size = new System.Drawing.Size(126, 20);
+            this.tbCustumerManuel.TabIndex = 10;
+            this.tbCustumerManuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCustumerManuel_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(583, 33);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(63, 13);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "ALICI EKLE";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(270, 32);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(35, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "CİNSİ";
+            // 
+            // cbSalePayType
+            // 
+            this.cbSalePayType.FormattingEnabled = true;
+            this.cbSalePayType.Items.AddRange(new object[] {
+            "TL",
+            "$",
+            "#"});
+            this.cbSalePayType.Location = new System.Drawing.Point(273, 56);
+            this.cbSalePayType.Name = "cbSalePayType";
+            this.cbSalePayType.Size = new System.Drawing.Size(43, 21);
+            this.cbSalePayType.TabIndex = 7;
+            // 
             // lblSave2
             // 
+            this.lblSave2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSave2.AutoSize = true;
             this.lblSave2.Location = new System.Drawing.Point(880, 29);
             this.lblSave2.Name = "lblSave2";
@@ -257,15 +338,6 @@
             this.lblSave2.TabIndex = 6;
             this.lblSave2.Text = "Kayıt Yapıldı";
             this.lblSave2.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(552, 36);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "CİNSİ";
             // 
             // btnAddSale
             // 
@@ -293,19 +365,6 @@
             this.tbSalePiece.Size = new System.Drawing.Size(71, 20);
             this.tbSalePiece.TabIndex = 3;
             this.tbSalePiece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSalePiece_KeyPress);
-            // 
-            // cbCinsi
-            // 
-            this.cbCinsi.FormattingEnabled = true;
-            this.cbCinsi.Items.AddRange(new object[] {
-            "TL",
-            "$",
-            "#"});
-            this.cbCinsi.Location = new System.Drawing.Point(553, 55);
-            this.cbCinsi.Name = "cbCinsi";
-            this.cbCinsi.Size = new System.Drawing.Size(43, 21);
-            this.cbCinsi.TabIndex = 2;
-            this.cbCinsi.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // cbType
             // 
@@ -361,7 +420,7 @@
             // 
             this.cbStockCode.FormatString = "N2";
             this.cbStockCode.FormattingEnabled = true;
-            this.cbStockCode.Location = new System.Drawing.Point(39, 57);
+            this.cbStockCode.Location = new System.Drawing.Point(39, 56);
             this.cbStockCode.Name = "cbStockCode";
             this.cbStockCode.Size = new System.Drawing.Size(121, 21);
             this.cbStockCode.TabIndex = 0;
@@ -371,9 +430,9 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.cbCustumerOto2);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.tbCustumerManuel2);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.lblSave3);
             this.groupBox3.Controls.Add(this.cbTakePay);
@@ -385,12 +444,51 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.cb2Cinsi);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(15, 282);
+            this.groupBox3.Location = new System.Drawing.Point(19, 258);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(968, 86);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ÖDEMELER";
+            // 
+            // cbCustumerOto2
+            // 
+            this.cbCustumerOto2.FormattingEnabled = true;
+            this.cbCustumerOto2.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Vadeli",
+            "Veresiye"});
+            this.cbCustumerOto2.Location = new System.Drawing.Point(640, 50);
+            this.cbCustumerOto2.Name = "cbCustumerOto2";
+            this.cbCustumerOto2.Size = new System.Drawing.Size(117, 21);
+            this.cbCustumerOto2.TabIndex = 14;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(637, 27);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 13);
+            this.label18.TabIndex = 13;
+            this.label18.Text = "ALICI SEÇ";
+            // 
+            // tbCustumerManuel2
+            // 
+            this.tbCustumerManuel2.Location = new System.Drawing.Point(474, 52);
+            this.tbCustumerManuel2.Name = "tbCustumerManuel2";
+            this.tbCustumerManuel2.Size = new System.Drawing.Size(126, 20);
+            this.tbCustumerManuel2.TabIndex = 12;
+            this.tbCustumerManuel2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCustumerManuel2_KeyPress);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(472, 28);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "ALICI EKLE";
             // 
             // lblSave3
             // 
@@ -550,59 +648,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(470, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(59, 20);
-            this.textBox1.TabIndex = 7;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(472, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "ÜRÜN FİYATI";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(270, 32);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 13);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "CİNSİ";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "TL",
-            "$",
-            "#"});
-            this.comboBox1.Location = new System.Drawing.Point(273, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(43, 21);
-            this.comboBox1.TabIndex = 7;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(585, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(126, 20);
-            this.textBox2.TabIndex = 10;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(583, 33);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 13);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "ALICI EKLE";
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -613,66 +658,6 @@
             this.button2.Text = "Kişi Ekle";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(474, 52);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(126, 20);
-            this.textBox3.TabIndex = 12;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(472, 28);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "ALICI EKLE";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Nakit",
-            "Kredi Kartı",
-            "Vadeli",
-            "Veresiye"});
-            this.comboBox2.Location = new System.Drawing.Point(640, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(117, 21);
-            this.comboBox2.TabIndex = 14;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(637, 27);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
-            this.label18.TabIndex = 13;
-            this.label18.Text = "ALICI SEÇ";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Nakit",
-            "Kredi Kartı",
-            "Vadeli",
-            "Veresiye"});
-            this.comboBox3.Location = new System.Drawing.Point(732, 58);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(107, 21);
-            this.comboBox3.TabIndex = 12;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(729, 31);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 13);
-            this.label19.TabIndex = 11;
-            this.label19.Text = "ALICI SEÇ";
             // 
             // AddForm
             // 
@@ -721,9 +706,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbCode;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbBRAND;
         private System.Windows.Forms.TextBox tbCustomer;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label7;
@@ -746,17 +729,17 @@
         private System.Windows.Forms.Label lblSave2;
         private System.Windows.Forms.Label lblSave3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tcPrices;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbCustomerOto;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbCustumerManuel;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbSalePayType;
+        private System.Windows.Forms.ComboBox cbCustumerOto2;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbCustumerManuel2;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button2;
     }

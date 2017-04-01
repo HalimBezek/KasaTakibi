@@ -12,6 +12,7 @@ namespace WindowsFormsApplication12
 {
     public partial class AddForm : Form
     {
+        String lgvCustumer;
         String PaymentType;
         public AddForm()
         {
@@ -30,7 +31,7 @@ namespace WindowsFormsApplication12
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if ((tbName.Text == "") || (tbCode.Text == "") || (tbPieces.Text == "") || (tbCustomer.Text == "") || (tbBRAND.Text == ""))
+            if ((tbName.Text == "") || (tbCode.Text == "") || (tbPieces.Text == "") || (tbCustomer.Text == "" )|| (tcPrices.Text == "") ||(cbCinsi.Text == ""))
             {
                 MessageBox.Show("Boş alan brakmayınız.", "Bilgilendirme Mesajı");
 
@@ -40,13 +41,13 @@ namespace WindowsFormsApplication12
 
                 SqlClass sqlConn = new SqlClass();
 
-                sqlConn.AddStock(tbName.Text, tbCode.Text, Convert.ToInt32(tbPieces.Text), tbCustomer.Text, tbBRAND.Text);
+                sqlConn.AddStock(tbName.Text, tbCode.Text, Convert.ToInt32(tbPieces.Text), tbCustomer.Text, Convert.ToInt32(tcPrices.Text), cbCinsi.Text);
                 tbName.Text = " ";
                 tbCode.Text = " ";
                 tbPieces.Text = " ";
                 tbCustomer.Text = " ";
-                tbBRAND.Text = " ";
-
+                tcPrices.Text = " ";
+                cbCinsi.Text = " ";
                 lblSave.Visible = true;
 
                 FullCombobax();
@@ -57,21 +58,30 @@ namespace WindowsFormsApplication12
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if ((cbStockCode.Text == "") || (tbSalePiece.Text == "") || (tbPrice.Text == "") || (cbType.Text == "") || (cbCinsi.Text == ""))
+
+            if ((cbStockCode.Text == "") || (tbSalePiece.Text == "") || (tbPrice.Text == "") || (cbType.Text == "") || (cbSalePayType.Text == "") || ((tbCustumerManuel.Text == "") && (cbCustomerOto.Text == "")))
             {
                 MessageBox.Show("Boş alan brakmayınız.", "Bilgilendirme Mesajı");
 
             }
             else
             {
+                lgvCustumer = "";
+                if (cbCustomerOto.Text != " ")
+                    lgvCustumer = cbCustomerOto.Text;
+                else
+                    lgvCustumer = tbCustumerManuel.Text;
+
                 SqlClass sqlConn = new SqlClass();
 
-                sqlConn.AddSale(cbStockCode.Text, Convert.ToInt32(tbSalePiece.Text), Convert.ToInt32(tbPrice.Text), cbType.Text, cbCinsi.Text);
+                sqlConn.AddSale(cbStockCode.Text, Convert.ToInt32(tbSalePiece.Text), Convert.ToInt32(tbPrice.Text), cbType.Text, cbSalePayType.Text, lgvCustumer);
                 cbStockCode.Text = " ";
                 tbSalePiece.Text = " ";
                 tbPrice.Text = " ";
                 cbType.Text = " ";
                 cbCinsi.Text = " ";
+                tbCustumerManuel.Text = " ";
+                cbCustomerOto.Text = " ";
 
                 lblSave2.Visible = true;
             }
@@ -84,7 +94,7 @@ namespace WindowsFormsApplication12
 
         private void btnAddPayment_Click(object sender, EventArgs e)
         {
-            if ((tbPricePay.Text == "") || (cb2Cinsi.Text == "") || (cb2Type.Text == "") || ((cbGivePay.Checked == false) && (cbTakePay.Checked == false)))
+            if ((tbPricePay.Text == "") || (cb2Cinsi.Text == "") || (cb2Type.Text == "") || ((cbGivePay.Checked == false) && (cbTakePay.Checked == false)) || ((cbCustumerOto2.Text == "") && (tbCustumerManuel2.Text == "")))
             {
                 MessageBox.Show("Boş alan brakmayınız.", "Bilgilendirme Mesajı");
 
@@ -95,16 +105,23 @@ namespace WindowsFormsApplication12
                     PaymentType = cbTakePay.Text;
                 else if (cbGivePay.Checked == true)
                     PaymentType = cbGivePay.Text;
-
+                lgvCustumer = "";
+                if (cbCustomerOto.Text != "")
+                    lgvCustumer = cbCustumerOto2.Text;
+                else
+                    lgvCustumer = tbCustumerManuel2.Text;
 
                 SqlClass sqlConn = new SqlClass();
-                sqlConn.AddPayment(PaymentType, Convert.ToInt32(tbPricePay.Text), cb2Cinsi.Text, cb2Type.Text);
+                sqlConn.AddPayment(PaymentType, Convert.ToInt32(tbPricePay.Text), cb2Cinsi.Text, cb2Type.Text, lgvCustumer);
 
                 cbGivePay.Checked = false;
                 cbTakePay.Checked = false;
                 tbPricePay.Text = " ";
                 cb2Cinsi.Text = " ";
                 cb2Type.Text = " ";
+                cbCustumerOto2.Text = " ";
+                tbCustumerManuel2.Text = " ";
+
 
 
                 lblSave3.Visible = true;
@@ -203,6 +220,28 @@ namespace WindowsFormsApplication12
         {
             AddPerson frmPerson = new AddPerson();
             frmPerson.Show();
+        }
+
+        private void tbName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void tcPrices_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void tbCustumerManuel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+            && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void tbCustumerManuel2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+            && !char.IsSeparator(e.KeyChar);
         }
     }
 }
