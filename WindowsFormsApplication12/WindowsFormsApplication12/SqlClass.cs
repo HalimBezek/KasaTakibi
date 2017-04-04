@@ -22,10 +22,12 @@ namespace WindowsFormsApplication12
             String bag;
             MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
 
+            build.Server = "localhost";
             build.UserID = "root";
             build.Password = "12345678";
             build.Database = "case_follow";
-            build.Server = "localhost";
+            build.Port = 3306;
+           
 
             bag = build.ToString();
             baglanti = new MySqlConnection(bag);

@@ -26,3 +26,5 @@ C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplicatio
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.denemesql.resources
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.AddPerson.resources
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\bin\Debug\MySql.Data.dll
+C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\bin\Debug\itextsharp.dll
+C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\bin\Debug\itextsharp.xml

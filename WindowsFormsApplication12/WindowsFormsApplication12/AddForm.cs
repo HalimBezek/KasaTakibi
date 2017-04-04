@@ -8,6 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.IO;
+using System.Net;
+using System.Net.Mail;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
+
 namespace WindowsFormsApplication12
 {
     public partial class AddForm : Form
@@ -166,7 +174,7 @@ namespace WindowsFormsApplication12
 
         private void AddForm_Load(object sender, EventArgs e)
         {
-            FullCombobax();
+           // FullCombobax();
         }
         private void FullCombobax()
         {
@@ -212,8 +220,23 @@ namespace WindowsFormsApplication12
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            MainForm frmMain = new MainForm();
-            frmMain.Show();
+            //PDF dosyamızı temsil edecek nesnemizi oluşturuyoruz
+            iTextSharp.text.Document pdfDosya = new iTextSharp.text.Document();
+            PdfWriter.GetInstance(pdfDosya, new FileStream("C:\Users\klm\Documents:CSharpPDF.pdf", FileMode.Create));
+
+            pdfDosya.Open();
+            pdfDosya.AddCreator("deneme Oluşturan");
+            pdfDosya.AddCreationDate();
+            pdfDosya.AddAuthor("Yazar");//yazar
+            pdfDosya.AddHeader("Başlık","Pdf uygulaması oluştur");
+            pdfDosya.AddTitle("Test pdf");
+            Paragraph eklenecekmetin = new Paragraph("paragraf");
+            pdfDosya.Add(eklenecekmetin);
+
+            pdfDosya.Close();
+
+            //MainForm frmMain = new MainForm();
+            //frmMain.Show();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -242,6 +265,12 @@ namespace WindowsFormsApplication12
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
             && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            denemesql dnm = new denemesql();
+            dnm.Show();
         }
     }
 }
