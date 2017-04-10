@@ -12,9 +12,11 @@ namespace WindowsFormsApplication12
 {
     public partial class frmSalesList : Form
     {
+        public DataGridView lgvdtgridSalesList; 
         public frmSalesList()
         {
             InitializeComponent();
+            lgvdtgridSalesList = dtgridSalesList;
         }
 
         private void frmSalesList_Load(object sender, EventArgs e)

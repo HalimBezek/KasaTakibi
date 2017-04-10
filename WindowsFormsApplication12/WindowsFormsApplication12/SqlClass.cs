@@ -46,6 +46,8 @@ namespace WindowsFormsApplication12
 
             ConnectSql();
             String sql = "SELECT * FROM " + DataListesi;
+            if (DataGridList.Name == "dtgridSalesList")
+                sql = sql + " ORDER BY  SALE_CODE";
             DataTable dt = new DataTable();
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -59,7 +61,6 @@ namespace WindowsFormsApplication12
             adapter.Fill(dt);
             DataGridList.DataSource = dt;
             baglanti.Close();
-
 
         }
 
@@ -85,9 +86,12 @@ namespace WindowsFormsApplication12
         {
             ConnectSql();
             baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
+            DateTime date = DateTime.Now;
+            string dateString = date.ToString();
+           // DateTime a = Convert.ToDateTime(dateString);
 
-            string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER) VALUES ('" + StockCode + "','" + Price +
-                                               "','" + Type + "','" + Cinsi + "','" + SalePiece + "', '"+ Custumer +"')";
+            string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER,DATE) VALUES ('" + StockCode + "','" + Price +
+                                               "','" + Type + "','" + Cinsi + "','" + SalePiece + "', '" + Custumer + "', '" + dateString + "')";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);

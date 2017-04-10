@@ -54,10 +54,7 @@
             this.btnAddSale = new System.Windows.Forms.Button();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbSalePiece = new System.Windows.Forms.TextBox();
-            this.cbType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbStockCode = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -82,6 +79,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -106,7 +108,7 @@
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.tbName);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(19, 31);
+            this.groupBox1.Location = new System.Drawing.Point(19, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(964, 95);
             this.groupBox1.TabIndex = 0;
@@ -115,7 +117,7 @@
             // 
             // tcPrices
             // 
-            this.tcPrices.Location = new System.Drawing.Point(664, 56);
+            this.tcPrices.Location = new System.Drawing.Point(557, 56);
             this.tcPrices.Name = "tcPrices";
             this.tcPrices.Size = new System.Drawing.Size(59, 20);
             this.tcPrices.TabIndex = 7;
@@ -124,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(741, 40);
+            this.label5.Location = new System.Drawing.Point(623, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 5;
@@ -133,11 +135,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(661, 40);
+            this.label6.Location = new System.Drawing.Point(554, 40);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 13);
+            this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 6;
-            this.label6.Text = "ÜRÜN FİYATI";
+            this.label6.Text = "FİYATI";
             // 
             // lblSave
             // 
@@ -162,9 +164,9 @@
             // 
             // tbPieces
             // 
-            this.tbPieces.Location = new System.Drawing.Point(797, 56);
+            this.tbPieces.Location = new System.Drawing.Point(690, 56);
             this.tbPieces.Name = "tbPieces";
-            this.tbPieces.Size = new System.Drawing.Size(59, 20);
+            this.tbPieces.Size = new System.Drawing.Size(76, 20);
             this.tbPieces.TabIndex = 3;
             this.tbPieces.TextChanged += new System.EventHandler(this.tbPieces_TextChanged);
             this.tbPieces.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPieces_KeyPress_1);
@@ -176,7 +178,7 @@
             "TL",
             "$",
             "#"});
-            this.cbCinsi.Location = new System.Drawing.Point(742, 55);
+            this.cbCinsi.Location = new System.Drawing.Point(626, 55);
             this.cbCinsi.Name = "cbCinsi";
             this.cbCinsi.Size = new System.Drawing.Size(43, 21);
             this.cbCinsi.TabIndex = 2;
@@ -185,17 +187,17 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(799, 40);
+            this.label9.Location = new System.Drawing.Point(692, 40);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.Size = new System.Drawing.Size(60, 13);
             this.label9.TabIndex = 1;
-            this.label9.Text = "ADET";
+            this.label9.Text = "KAÇ ADET";
             // 
             // tbCode
             // 
             this.tbCode.Location = new System.Drawing.Point(257, 56);
             this.tbCode.Name = "tbCode";
-            this.tbCode.Size = new System.Drawing.Size(185, 20);
+            this.tbCode.Size = new System.Drawing.Size(126, 20);
             this.tbCode.TabIndex = 3;
             this.tbCode.TextChanged += new System.EventHandler(this.tbCode_TextChanged);
             // 
@@ -210,16 +212,16 @@
             // 
             // tbCustomer
             // 
-            this.tbCustomer.Location = new System.Drawing.Point(470, 56);
+            this.tbCustomer.Location = new System.Drawing.Point(402, 56);
             this.tbCustomer.Name = "tbCustomer";
-            this.tbCustomer.Size = new System.Drawing.Size(185, 20);
+            this.tbCustomer.Size = new System.Drawing.Size(118, 20);
             this.tbCustomer.TabIndex = 3;
             this.tbCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCustomer_KeyPress);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(472, 40);
+            this.label13.Location = new System.Drawing.Point(404, 40);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(142, 13);
             this.label13.TabIndex = 1;
@@ -246,6 +248,9 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cbType);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cbCustomerOto);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.tbCustumerManuel);
@@ -256,15 +261,12 @@
             this.groupBox2.Controls.Add(this.btnAddSale);
             this.groupBox2.Controls.Add(this.tbPrice);
             this.groupBox2.Controls.Add(this.tbSalePiece);
-            this.groupBox2.Controls.Add(this.cbType);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbStockCode);
-            this.groupBox2.Location = new System.Drawing.Point(19, 150);
+            this.groupBox2.Location = new System.Drawing.Point(19, 204);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(964, 85);
+            this.groupBox2.Size = new System.Drawing.Size(958, 85);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "GÜNLÜK SATIŞ";
@@ -277,7 +279,7 @@
             "Kredi Kartı",
             "Vadeli",
             "Veresiye"});
-            this.cbCustomerOto.Location = new System.Drawing.Point(732, 56);
+            this.cbCustomerOto.Location = new System.Drawing.Point(402, 55);
             this.cbCustomerOto.Name = "cbCustomerOto";
             this.cbCustomerOto.Size = new System.Drawing.Size(107, 21);
             this.cbCustomerOto.TabIndex = 12;
@@ -285,7 +287,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(729, 31);
+            this.label19.Location = new System.Drawing.Point(400, 33);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(57, 13);
             this.label19.TabIndex = 11;
@@ -293,7 +295,7 @@
             // 
             // tbCustumerManuel
             // 
-            this.tbCustumerManuel.Location = new System.Drawing.Point(585, 57);
+            this.tbCustumerManuel.Location = new System.Drawing.Point(258, 56);
             this.tbCustumerManuel.Name = "tbCustumerManuel";
             this.tbCustumerManuel.Size = new System.Drawing.Size(126, 20);
             this.tbCustumerManuel.TabIndex = 10;
@@ -302,7 +304,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(583, 33);
+            this.label16.Location = new System.Drawing.Point(258, 29);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(63, 13);
             this.label16.TabIndex = 9;
@@ -311,7 +313,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(270, 32);
+            this.label15.Location = new System.Drawing.Point(730, 32);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 13);
             this.label15.TabIndex = 8;
@@ -324,7 +326,7 @@
             "TL",
             "$",
             "#"});
-            this.cbSalePayType.Location = new System.Drawing.Point(273, 56);
+            this.cbSalePayType.Location = new System.Drawing.Point(733, 56);
             this.cbSalePayType.Name = "cbSalePayType";
             this.cbSalePayType.Size = new System.Drawing.Size(43, 21);
             this.cbSalePayType.TabIndex = 7;
@@ -333,7 +335,7 @@
             // 
             this.lblSave2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSave2.AutoSize = true;
-            this.lblSave2.Location = new System.Drawing.Point(880, 29);
+            this.lblSave2.Location = new System.Drawing.Point(874, 29);
             this.lblSave2.Name = "lblSave2";
             this.lblSave2.Size = new System.Drawing.Size(64, 13);
             this.lblSave2.TabIndex = 6;
@@ -343,7 +345,7 @@
             // btnAddSale
             // 
             this.btnAddSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddSale.Location = new System.Drawing.Point(882, 45);
+            this.btnAddSale.Location = new System.Drawing.Point(876, 45);
             this.btnAddSale.Name = "btnAddSale";
             this.btnAddSale.Size = new System.Drawing.Size(75, 33);
             this.btnAddSale.TabIndex = 4;
@@ -353,7 +355,7 @@
             // 
             // tbPrice
             // 
-            this.tbPrice.Location = new System.Drawing.Point(193, 57);
+            this.tbPrice.Location = new System.Drawing.Point(653, 57);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(74, 20);
             this.tbPrice.TabIndex = 4;
@@ -361,52 +363,20 @@
             // 
             // tbSalePiece
             // 
-            this.tbSalePiece.Location = new System.Drawing.Point(361, 58);
+            this.tbSalePiece.Location = new System.Drawing.Point(802, 57);
             this.tbSalePiece.Name = "tbSalePiece";
             this.tbSalePiece.Size = new System.Drawing.Size(71, 20);
             this.tbSalePiece.TabIndex = 3;
             this.tbSalePiece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSalePiece_KeyPress);
             // 
-            // cbType
-            // 
-            this.cbType.FormattingEnabled = true;
-            this.cbType.Items.AddRange(new object[] {
-            "Nakit",
-            "Kredi Kartı",
-            "Vadeli",
-            "Veresiye"});
-            this.cbType.Location = new System.Drawing.Point(470, 56);
-            this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(79, 21);
-            this.cbType.TabIndex = 2;
-            this.cbType.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(191, 33);
+            this.label4.Location = new System.Drawing.Point(651, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "FİYATI ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(469, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "ÖDEME TİPİ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(358, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "SATIŞ ADEDİ";
             // 
             // label1
             // 
@@ -423,7 +393,7 @@
             this.cbStockCode.FormattingEnabled = true;
             this.cbStockCode.Location = new System.Drawing.Point(39, 56);
             this.cbStockCode.Name = "cbStockCode";
-            this.cbStockCode.Size = new System.Drawing.Size(121, 21);
+            this.cbStockCode.Size = new System.Drawing.Size(185, 21);
             this.cbStockCode.TabIndex = 0;
             this.cbStockCode.SelectedIndexChanged += new System.EventHandler(this.cbStockCode_SelectedIndexChanged);
             // 
@@ -445,7 +415,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.cb2Cinsi);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(19, 258);
+            this.groupBox3.Location = new System.Drawing.Point(19, 312);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(968, 86);
             this.groupBox3.TabIndex = 2;
@@ -460,7 +430,7 @@
             "Kredi Kartı",
             "Vadeli",
             "Veresiye"});
-            this.cbCustumerOto2.Location = new System.Drawing.Point(640, 50);
+            this.cbCustumerOto2.Location = new System.Drawing.Point(403, 50);
             this.cbCustumerOto2.Name = "cbCustumerOto2";
             this.cbCustumerOto2.Size = new System.Drawing.Size(117, 21);
             this.cbCustumerOto2.TabIndex = 14;
@@ -468,7 +438,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(637, 27);
+            this.label18.Location = new System.Drawing.Point(400, 27);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(57, 13);
             this.label18.TabIndex = 13;
@@ -476,7 +446,7 @@
             // 
             // tbCustumerManuel2
             // 
-            this.tbCustumerManuel2.Location = new System.Drawing.Point(474, 52);
+            this.tbCustumerManuel2.Location = new System.Drawing.Point(257, 51);
             this.tbCustumerManuel2.Name = "tbCustumerManuel2";
             this.tbCustumerManuel2.Size = new System.Drawing.Size(126, 20);
             this.tbCustumerManuel2.TabIndex = 12;
@@ -485,7 +455,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(472, 28);
+            this.label17.Location = new System.Drawing.Point(255, 27);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(63, 13);
             this.label17.TabIndex = 11;
@@ -529,7 +499,7 @@
             "Kredi Kartı",
             "Vadeli",
             "Veresiye"});
-            this.cb2Type.Location = new System.Drawing.Point(363, 52);
+            this.cb2Type.Location = new System.Drawing.Point(555, 50);
             this.cb2Type.Name = "cb2Type";
             this.cb2Type.Size = new System.Drawing.Size(79, 21);
             this.cb2Type.TabIndex = 6;
@@ -537,7 +507,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(360, 26);
+            this.label10.Location = new System.Drawing.Point(552, 24);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 13);
             this.label10.TabIndex = 5;
@@ -556,7 +526,7 @@
             // 
             // tbPricePay
             // 
-            this.tbPricePay.Location = new System.Drawing.Point(192, 52);
+            this.tbPricePay.Location = new System.Drawing.Point(654, 52);
             this.tbPricePay.Name = "tbPricePay";
             this.tbPricePay.Size = new System.Drawing.Size(74, 20);
             this.tbPricePay.TabIndex = 3;
@@ -566,7 +536,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(269, 29);
+            this.label12.Location = new System.Drawing.Point(731, 29);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 1;
@@ -579,7 +549,7 @@
             "TL",
             "$",
             "#"});
-            this.cb2Cinsi.Location = new System.Drawing.Point(272, 51);
+            this.cb2Cinsi.Location = new System.Drawing.Point(734, 51);
             this.cb2Cinsi.Name = "cb2Cinsi";
             this.cb2Cinsi.Size = new System.Drawing.Size(43, 21);
             this.cb2Cinsi.TabIndex = 2;
@@ -588,7 +558,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(189, 29);
+            this.label11.Location = new System.Drawing.Point(651, 29);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
             this.label11.TabIndex = 1;
@@ -671,12 +641,55 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.SeaShell;
+            this.label14.Location = new System.Drawing.Point(326, 23);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(341, 37);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "İyi Günlerde Kullanın ";
+            // 
+            // cbType
+            // 
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Vadeli",
+            "Veresiye"});
+            this.cbType.Location = new System.Drawing.Point(555, 55);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(79, 21);
+            this.cbType.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(554, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "ÖDEME TİPİ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(799, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "KAÇ ADET";
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(995, 522);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -688,7 +701,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddForm";
-            this.Text = "Ekle";
+            this.Text = "Kayıt Ekleyin";
             this.Load += new System.EventHandler(this.AddForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -697,6 +710,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -704,10 +718,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbStockCode;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -756,6 +767,11 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 
