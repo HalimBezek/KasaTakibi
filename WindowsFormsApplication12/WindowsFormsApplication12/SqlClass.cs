@@ -9,6 +9,8 @@ using System.Data;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Globalization;
+
 
 namespace WindowsFormsApplication12
 {
@@ -16,6 +18,8 @@ namespace WindowsFormsApplication12
     {
         MySqlConnection baglanti;
         String DataListesi;
+        DateTimePicker dtp;
+       
         public void ConnectSql()
         {
 
@@ -34,7 +38,7 @@ namespace WindowsFormsApplication12
 
         }
 
-        public void ListData(DataGridView DataGridList)
+        public void ListData(DataGridView DataGridList, DateTime dtStart, DateTime dtFinish)
         {
             if (DataGridList.Name == "dtgridSalesList")
                 DataListesi = "daily_sale";
@@ -42,12 +46,12 @@ namespace WindowsFormsApplication12
                 DataListesi = "stock_list";
             else if (DataGridList.Name == "dtgridPaymentList")
                 DataListesi = "payments";
-            else DataListesi = "stock_list";
+            else DataListesi = DataGridList.Name;
 
             ConnectSql();
             String sql = "SELECT * FROM " + DataListesi;
-            if (DataGridList.Name == "dtgridSalesList")
-                sql = sql + " ORDER BY  SALE_CODE";
+            //if (DataGridList.Name == "dtgridSalesList")
+            //    sql = sql + " ORDER BY  SALE_CODE";
             DataTable dt = new DataTable();
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -64,8 +68,18 @@ namespace WindowsFormsApplication12
 
         }
 
-        public void AddStock(String Name, String Code, int Pieces,String Customer,int Price, String Cinsi)
+        public void AddStock(String Name, String Code, int Pieces,String Customer,double Price, String Cinsi)
         {
+            string yr,m, d , t;
+            DateTime  DTIME;
+            yr = DateTime.Now.Date.Year.ToString();
+            m = DateTime.Now.Date.Month.ToString();
+            d = DateTime.Now.Date.Day.ToString();
+            DTIME =DateTime.Now.Date;
+            t = yr + "-" + m + "-" + d;
+            //dt = DTIME.ToString("yyyy.mm.dd");
+        //   DTIME = DateTime.ParseExact(dt, @"yyyy.mm.dd",); //Convert.ToDateTime(dt);
+          //  DTIME = Convert.ToDateTime(t, "yyyy-mm-dd");
             ConnectSql();
             baglanti.Open();//	ID	NAME STOK ADI	CODE STOK KODU	PIECE KAÇ ADET	CUSTOMER KIM ALDI	BRAND URUN MARKASI
 
@@ -77,6 +91,33 @@ namespace WindowsFormsApplication12
 
 
             komut.ExecuteNonQuery(); 
+            baglanti.Close();
+
+
+        }
+        public void AddPerson(String Name, String Surname, String Firm_name, String Tel_number, String Adress)
+        {
+            string yr, m, d, t;
+            DateTime DTIME;
+            yr = DateTime.Now.Date.Year.ToString();
+            m = DateTime.Now.Date.Month.ToString();
+            d = DateTime.Now.Date.Day.ToString();
+            DTIME = DateTime.Now.Date;
+            t = yr + "-" + m + "-" + d;
+            //dt = DTIME.ToString("yyyy.mm.dd");
+            //   DTIME = DateTime.ParseExact(dt, @"yyyy.mm.dd",); //Convert.ToDateTime(dt);
+            //  DTIME = Convert.ToDateTime(t, "yyyy-mm-dd");
+            ConnectSql();
+            baglanti.Open();//		ID	NAME	SURNAME	FIRM_NAME	TEL_NO	ADRESS
+
+            string sql = "INSERT INTO customer_list (NAME, SURNAME, FIRM_NAME, TEL_NO, ADRESS) VALUES ('" + Name + "','" + Surname +
+                                               "','" + Firm_name + "','" + Tel_number + "','" + Adress + "')";
+
+
+            MySqlCommand komut = new MySqlCommand(sql, baglanti);
+
+
+            komut.ExecuteNonQuery();
             baglanti.Close();
 
 

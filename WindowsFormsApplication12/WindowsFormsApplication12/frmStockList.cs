@@ -20,7 +20,7 @@ namespace WindowsFormsApplication12
         private void frmStockList_Load(object sender, EventArgs e)
         {
             SqlClass sqlCon = new SqlClass();
-            sqlCon.ListData(dtgrdStockList);
+            sqlCon.ListData(dtgrdStockList, DateTime.Now,DateTime.Now);
 
 
             dtgrdStockList.Columns[0].HeaderText = "Numarası";
@@ -28,7 +28,7 @@ namespace WindowsFormsApplication12
             dtgrdStockList.Columns[2].HeaderText = "Stok Kodu";
             dtgrdStockList.Columns[3].HeaderText = "Kaç Adet";
             dtgrdStockList.Columns[4].HeaderText = "Alan Firma/Kişi";
-            dtgrdStockList.Columns[5].HeaderText = "Markası";
+            dtgrdStockList.Columns[5].HeaderText = "Fiyatı";
             dtgrdStockList.Columns[6].HeaderText = "Ödeme Cinsi";
 
             dtgrdStockList.Columns[0].Visible = false;
@@ -43,6 +43,23 @@ namespace WindowsFormsApplication12
         private void dtgrdStockList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnQueryStock_Click(object sender, EventArgs e)
+        {   
+            SqlClass sqlCon = new SqlClass();
+            sqlCon.ListData(dtgrdStockList,dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
+
+
+            dtgrdStockList.Columns[0].HeaderText = "Numarası";
+            dtgrdStockList.Columns[1].HeaderText = "Adı";
+            dtgrdStockList.Columns[2].HeaderText = "Stok Kodu";
+            dtgrdStockList.Columns[3].HeaderText = "Kaç Adet";
+            dtgrdStockList.Columns[4].HeaderText = "Alan Firma/Kişi";
+            dtgrdStockList.Columns[5].HeaderText = "Fiyatı";
+            dtgrdStockList.Columns[6].HeaderText = "Ödeme Cinsi";
+
+            dtgrdStockList.Columns[0].Visible = false;
         }
     }
 }

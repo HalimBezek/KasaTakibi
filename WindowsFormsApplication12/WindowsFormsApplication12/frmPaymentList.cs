@@ -20,12 +20,12 @@ namespace WindowsFormsApplication12
         private void frmPaymentList_Load(object sender, EventArgs e)
         {
             SqlClass sqlCon = new SqlClass();
-            sqlCon.ListData(dtgridPaymentList);
+            sqlCon.ListData(dtgridPaymentList, DateTime.Now, DateTime.Now);
 
             dtgridPaymentList.Columns[0].HeaderText = "Numarası";
             dtgridPaymentList.Columns[1].HeaderText = "Ödeme Şekli";
-            dtgridPaymentList.Columns[2].HeaderText = "Miktar";
-            dtgridPaymentList.Columns[3].HeaderText = "Ödeme Tipi";
+            dtgridPaymentList.Columns[2].HeaderText = "Ödeme Tipi";
+            dtgridPaymentList.Columns[3].HeaderText = "Miktar";
             dtgridPaymentList.Columns[4].HeaderText = "Ödeme Cinsi";
             dtgridPaymentList.Columns[5].HeaderText = "Müşteri";
                       

@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -100,6 +101,12 @@
     <Compile Include="denemesql.Designer.cs">
       <DependentUpon>denemesql.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCusumerCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCusumerCase.Designer.cs">
+      <DependentUpon>frmCusumerCase.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPaymentList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="denemesql.resx">
       <DependentUpon>denemesql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCusumerCase.resx">
+      <DependentUpon>frmCusumerCase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPaymentList.resx">
       <DependentUpon>frmPaymentList.cs</DependentUpon>

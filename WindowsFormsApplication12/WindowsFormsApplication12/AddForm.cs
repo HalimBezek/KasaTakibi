@@ -39,7 +39,7 @@ namespace WindowsFormsApplication12
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAddStock_Click(object sender, EventArgs e)//private void button1_Click(object sender, EventArgs e)
         {
             if ((tbName.Text == "") || (tbCode.Text == "") || (tbPieces.Text == "") || (tbCustomer.Text == "" )|| (tcPrices.Text == "") ||(cbCinsi.Text == ""))
             {
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication12
 
                 SqlClass sqlConn = new SqlClass();
 
-                sqlConn.AddStock(tbName.Text, tbCode.Text, Convert.ToInt32(tbPieces.Text), tbCustomer.Text, Convert.ToInt32(tcPrices.Text), cbCinsi.Text);
+                sqlConn.AddStock(tbName.Text, tbCode.Text, Convert.ToInt32(tbPieces.Text), tbCustomer.Text, Convert.ToDouble (tcPrices.Text), cbCinsi.Text);
                 tbName.Text = " ";
                 tbCode.Text = " ";
                 tbPieces.Text = " ";
@@ -77,7 +77,7 @@ namespace WindowsFormsApplication12
             else
             {
                 lgvCustumer = "";
-                if (cbCustomerOto.Text != " ")
+                if ( cbCustomerOto.Text.Trim() != "")
                     lgvCustumer = cbCustomerOto.Text;
                 else
                     lgvCustumer = tbCustumerManuel.Text;
@@ -116,7 +116,7 @@ namespace WindowsFormsApplication12
                 else if (cbGivePay.Checked == true)
                     PaymentType = cbGivePay.Text;
                 lgvCustumer = "";
-                if (cbCustomerOto.Text != "")
+                if (cbCustumerOto2.Text.Trim() != "")
                     lgvCustumer = cbCustumerOto2.Text;
                 else
                     lgvCustumer = tbCustumerManuel2.Text;
@@ -176,16 +176,25 @@ namespace WindowsFormsApplication12
 
         private void AddForm_Load(object sender, EventArgs e)
         {
-           // FullCombobax();
+           
+            FullCombobax();
         }
-        private void FullCombobax()
-        {
-            DataGridView DataGrView = new DataGridView();
+        public void FullCombobax()
+        {//customer_list
+            DataGridView stock_list = new DataGridView();
+            stock_list.Name = "stock_list";
+            DataGridView customer_list = new DataGridView();
+            customer_list.Name = "customer_list";
             SqlClass sqlCon = new SqlClass();
-            sqlCon.ListData(DataGrView);
-            cbStockCode.DataSource = DataGrView.DataSource;
+            sqlCon.ListData(stock_list, DateTime.Now, DateTime.Now);
+            cbStockCode.DataSource = stock_list.DataSource;
             cbStockCode.DisplayMember = "CODE";
 
+            sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
+            cbCustomerOto.DataSource = customer_list.DataSource;
+            cbCustomerOto.DisplayMember = "NAME"; //
+            cbCustumerOto2.DataSource = customer_list.DataSource;
+            cbCustumerOto2.DisplayMember = "NAME";
         }
 
         private void tbPieces_TextChanged(object sender, EventArgs e)
@@ -207,7 +216,11 @@ namespace WindowsFormsApplication12
 
         private void tbPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.';
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
         }
 
         private void tbSalePiece_KeyPress(object sender, KeyPressEventArgs e)
@@ -217,14 +230,18 @@ namespace WindowsFormsApplication12
 
         private void tbPricePay_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.';
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             SqlClass sqlCon = new SqlClass();
             frmSalesList frmSList = new frmSalesList();
-            sqlCon.ListData(frmSList.lgvdtgridSalesList);
+            sqlCon.ListData(frmSList.lgvdtgridSalesList, DateTime.Now, DateTime.Now);
 
             string dosyakayityolu;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -235,9 +252,9 @@ namespace WindowsFormsApplication12
 
             raporum.AddCreationDate();
             raporum.AddAuthor("ae-robotic");//yazar
-            //raporum.AddHeader("Başlık", "Pdf uygulaması oluştur");
-            //raporum.AddTitle("Test pdf");
-           
+            raporum.AddHeader("Başlık", "Pdf uygulaması oluştur");
+            raporum.AddTitle("Test pdf");
+                
            
 
             PdfWriter.GetInstance(raporum, new FileStream(dosyakayityolu, FileMode.OpenOrCreate));
@@ -246,6 +263,11 @@ namespace WindowsFormsApplication12
             PdfPTable table2 = new PdfPTable(4);
             #region  font ayarları
             //BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            table.HorizontalAlignment = 0;
+            table.PaddingTop = 10f;
+            table2.HorizontalAlignment = 2;
+            table2.PaddingTop = 5f;
+           // table2.DeleteBodyRows();
 
             BaseFont arial = BaseFont.CreateFont("C:\\windows\\fonts\\Corbel.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             // en ust reklam yazı ADEM OLGUNER
@@ -253,14 +275,14 @@ namespace WindowsFormsApplication12
             // tablonun içeriğinin oldugu yermakalenin özellikleri  ve detaylar
             iTextSharp.text.Font font2 = new iTextSharp.text.Font(arial, 8, iTextSharp.text.Font.NORMAL); 
             // tablo baslıkları hangi alanlar   baslik makaleid gibi a
-            iTextSharp.text.Font font3 = new iTextSharp.text.Font(arial, 10, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font font3 = new iTextSharp.text.Font(arial, 10, iTextSharp.text.Font.NORMAL,BaseColor.WHITE);
 
             #endregion
             #region tablo ana başlık firma adı
             string frmadi = "GÜNLÜK SATIŞ";
             PdfPCell cell = new PdfPCell(new Phrase(frmadi, font));
             cell.Colspan = 7;
-            cell.PaddingBottom = 10f;
+            cell.PaddingBottom = 7f;
             cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
           //  cell.BackgroundColor = BaseColor.RED;
             table.AddCell(cell);
@@ -299,7 +321,7 @@ namespace WindowsFormsApplication12
             cell8.Colspan = 1;
             cell8.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
             cell8.BackgroundColor = BaseColor.BLUE;
-            cell4.PaddingBottom = 20f;          
+            cell4.BorderWidthLeft = 0f;          
                
            // table.AddCell(cell1);
             table.AddCell(cell2);
@@ -314,13 +336,16 @@ namespace WindowsFormsApplication12
 
                 ////
             
-            #region tablo ana başlık firma adı
+            #region tablo ana başlık kasa adı
             string PdfAdi = "KASA DEVİR";
             PdfPCell cellT2 = new PdfPCell(new Phrase(PdfAdi, font));
             cellT2.Colspan = 4;
-            cellT2.PaddingBottom = 20f;
+            cellT2.PaddingBottom = 5f;
             cellT2.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
             //cellT2.BackgroundColor = BaseColor.RED;
+            cell2.BorderColor = BaseColor.BLUE;
+            cellT2.AddElement(table);
+             
             table2.AddCell(cellT2);
             #endregion
             #region tablo başlıkları için
@@ -364,6 +389,7 @@ namespace WindowsFormsApplication12
             { raporum.Open(); }
 
             Paragraph eklenecekmetin = new Paragraph("paragraf");
+           
             raporum.Add(eklenecekmetin);
 
             int SatirNumarası = 0;
@@ -385,6 +411,7 @@ namespace WindowsFormsApplication12
                         else     //frmSList.lgvdtgridSalesList.Rows[2].Cells[3].Value.ToString();
                             yazi = Satir.DataGridView.Rows[SatirNumarası].Cells[SutunNumarası].Value.ToString();//(Satir.DataGridView.Columns[Sutun.DataGridView.Columns[Sutun.Index].Name].Name);
                         table.AddCell(new Phrase(yazi.TrimEnd('0').ToString().TrimEnd('.').ToString(), font2));
+                        //table.AddCell(table2);
                     }
 
                    
@@ -424,6 +451,8 @@ namespace WindowsFormsApplication12
                 SatirNumarası = SatirNumarası + 1;
 
             }
+            //table2.DeleteRow(1);
+            
             raporum.Add(table2);
             raporum.Add(table);
             
@@ -449,7 +478,13 @@ namespace WindowsFormsApplication12
 
         private void tcPrices_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.';
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
+            //float num = float.Parse(textBox1.Text);
+          //  string stringValue = num.ToString().Replace(',', '.');
         }
 
         private void tbCustumerManuel_KeyPress(object sender, KeyPressEventArgs e)
@@ -466,8 +501,71 @@ namespace WindowsFormsApplication12
 
         private void button3_Click(object sender, EventArgs e)
         {
-            denemesql dnm = new denemesql();
-            dnm.Show();
+            frmCusumerCase frmCase = new frmCusumerCase();
+            frmCase.Show();
         }
+
+        private void tbCustumerManuel_TextChanged(object sender, EventArgs e)
+        {
+            if (tbCustumerManuel.Text.Trim() != "")
+            {
+                cbCustomerOto.Enabled = false;
+            }
+            else cbCustomerOto.Enabled = true;
+        }
+
+        private void tbCustumerManuel2_TextChanged(object sender, EventArgs e)
+        {
+            if (tbCustumerManuel2.Text.Trim() != "")
+            {
+                cbCustumerOto2.Enabled = false;
+            }
+            else cbCustumerOto2.Enabled = true;
+        }
+
+        private void cbCustomerOto_TextChanged(object sender, EventArgs e)
+        {
+            if (cbCustomerOto.Text.Trim() != "")
+            {
+                tbCustumerManuel.Enabled = false;
+            }
+            else tbCustumerManuel.Enabled = true;
+        }
+
+        private void cbCustumerOto2_TextChanged(object sender, EventArgs e)
+        {
+            if (cbCustumerOto2.Text.Trim() != "")
+            {
+                tbCustumerManuel2.Enabled = false;
+            }
+            else tbCustumerManuel2.Enabled = true;
+        }
+
+        private void cbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTakePay_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbTakePay.Checked == true)
+            {
+                cbGivePay.Checked = false;
+                cbGivePay.Enabled = false;
+            }
+            else cbGivePay.Enabled = true;
+        }
+
+        private void cbGivePay_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (cbGivePay.Checked == true)
+            {
+                cbTakePay.Checked = false;
+                cbTakePay.Enabled = false;
+            }
+            else cbTakePay.Enabled = true;
+        }
+
     }
 }

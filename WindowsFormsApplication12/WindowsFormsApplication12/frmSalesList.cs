@@ -22,12 +22,12 @@ namespace WindowsFormsApplication12
         private void frmSalesList_Load(object sender, EventArgs e)
         {
             SqlClass sqlCon = new SqlClass();
-            sqlCon.ListData(dtgridSalesList);
+            sqlCon.ListData(dtgridSalesList, DateTime.Now, DateTime.Now);
 
             dtgridSalesList.Columns[0].HeaderText = "Numarası";
             dtgridSalesList.Columns[1].HeaderText = "Satılan Ürün Kodu";
-            dtgridSalesList.Columns[2].HeaderText = "Fiyatı";
-            dtgridSalesList.Columns[3].HeaderText = "Ödeme Tipi";
+            dtgridSalesList.Columns[2].HeaderText = "Ödeme Tipi";
+            dtgridSalesList.Columns[3].HeaderText = "Fiyatı";
             dtgridSalesList.Columns[4].HeaderText = "Ödeme Cinsi";
             dtgridSalesList.Columns[5].HeaderText = "Adet";
             dtgridSalesList.Columns[6].HeaderText = "Müşteri";
