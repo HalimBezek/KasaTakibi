@@ -49,7 +49,7 @@
             this.tbTelNum.Location = new System.Drawing.Point(12, 150);
             this.tbTelNum.Name = "tbTelNum";
             this.tbTelNum.Size = new System.Drawing.Size(185, 20);
-            this.tbTelNum.TabIndex = 8;
+            this.tbTelNum.TabIndex = 4;
             this.tbTelNum.TextChanged += new System.EventHandler(this.tbTelNum_TextChanged);
             this.tbTelNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCode_KeyPress);
             // 
@@ -68,14 +68,14 @@
             this.tbadres.Multiline = true;
             this.tbadres.Name = "tbadres";
             this.tbadres.Size = new System.Drawing.Size(185, 87);
-            this.tbadres.TabIndex = 9;
+            this.tbadres.TabIndex = 5;
             // 
             // tbSurname
             // 
             this.tbSurname.Location = new System.Drawing.Point(226, 38);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(185, 20);
-            this.tbSurname.TabIndex = 10;
+            this.tbSurname.TabIndex = 2;
             this.tbSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCustomer_KeyPress);
             // 
             // label14
@@ -101,7 +101,7 @@
             this.tbName.Location = new System.Drawing.Point(12, 38);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(185, 20);
-            this.tbName.TabIndex = 11;
+            this.tbName.TabIndex = 1;
             this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             // 
@@ -117,7 +117,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(444, 177);
+            this.button1.Location = new System.Drawing.Point(430, 177);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 39);
             this.button1.TabIndex = 12;
@@ -128,9 +128,9 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(345, 176);
+            this.button2.Location = new System.Drawing.Point(346, 177);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 39);
+            this.button2.Size = new System.Drawing.Size(75, 40);
             this.button2.TabIndex = 13;
             this.button2.Text = "Ekle";
             this.button2.UseVisualStyleBackColor = true;
@@ -141,7 +141,7 @@
             this.tbfirmname.Location = new System.Drawing.Point(12, 83);
             this.tbfirmname.Name = "tbfirmname";
             this.tbfirmname.Size = new System.Drawing.Size(185, 20);
-            this.tbfirmname.TabIndex = 15;
+            this.tbfirmname.TabIndex = 3;
             this.tbfirmname.TextChanged += new System.EventHandler(this.tbfirmname_TextChanged);
             // 
             // label1

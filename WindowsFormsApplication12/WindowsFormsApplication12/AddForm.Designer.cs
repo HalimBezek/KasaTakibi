@@ -44,6 +44,7 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbIDtutar = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,6 +85,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label14 = new System.Windows.Forms.Label();
+            this.cbIDtutar1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -254,6 +256,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.Color.Olive;
+            this.groupBox2.Controls.Add(this.cbIDtutar);
             this.groupBox2.Controls.Add(this.cbType);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
@@ -278,13 +281,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "GÜNLÜK SATIŞ";
             // 
+            // cbIDtutar
+            // 
+            this.cbIDtutar.FormattingEnabled = true;
+            this.cbIDtutar.Location = new System.Drawing.Point(725, 27);
+            this.cbIDtutar.Name = "cbIDtutar";
+            this.cbIDtutar.Size = new System.Drawing.Size(35, 21);
+            this.cbIDtutar.TabIndex = 16;
+            this.cbIDtutar.Visible = false;
+            // 
             // cbType
             // 
             this.cbType.FormattingEnabled = true;
             this.cbType.Items.AddRange(new object[] {
             "Nakit",
             "Kredi Kartı",
-            "Vadeli",
             "Veresiye"});
             this.cbType.Location = new System.Drawing.Point(192, 56);
             this.cbType.Name = "cbType";
@@ -444,6 +455,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.cbIDtutar1);
             this.groupBox3.Controls.Add(this.cbCustumerOto2);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.tbCustumerManuel2);
@@ -545,7 +557,6 @@
             this.cb2Type.Items.AddRange(new object[] {
             "Nakit",
             "Kredi Kartı",
-            "Vadeli",
             "Veresiye"});
             this.cb2Type.Location = new System.Drawing.Point(515, 49);
             this.cb2Type.Name = "cb2Type";
@@ -630,9 +641,9 @@
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button5.Location = new System.Drawing.Point(19, 462);
+            this.button5.Location = new System.Drawing.Point(20, 462);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(82, 48);
+            this.button5.Size = new System.Drawing.Size(82, 49);
             this.button5.TabIndex = 6;
             this.button5.Text = "Ödemeler";
             this.button5.UseVisualStyleBackColor = true;
@@ -708,6 +719,20 @@
             this.label14.Size = new System.Drawing.Size(341, 37);
             this.label14.TabIndex = 12;
             this.label14.Text = "İyi Günlerde Kullanın ";
+            // 
+            // cbIDtutar1
+            // 
+            this.cbIDtutar1.FormattingEnabled = true;
+            this.cbIDtutar1.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Vadeli",
+            "Veresiye"});
+            this.cbIDtutar1.Location = new System.Drawing.Point(425, 19);
+            this.cbIDtutar1.Name = "cbIDtutar1";
+            this.cbIDtutar1.Size = new System.Drawing.Size(50, 21);
+            this.cbIDtutar1.TabIndex = 15;
+            this.cbIDtutar1.Visible = false;
             // 
             // AddForm
             // 
@@ -798,6 +823,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddStock;
+        private System.Windows.Forms.ComboBox cbIDtutar;
+        private System.Windows.Forms.ComboBox cbIDtutar1;
     }
 }
 

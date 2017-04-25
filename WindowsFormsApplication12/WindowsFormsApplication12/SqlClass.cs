@@ -37,6 +37,7 @@ namespace WindowsFormsApplication12
             baglanti = new MySqlConnection(bag);
 
         }
+    
 
         public void ListData(DataGridView DataGridList, DateTime dtStart, DateTime dtFinish)
         {
@@ -46,10 +47,12 @@ namespace WindowsFormsApplication12
                 DataListesi = "stock_list";
             else if (DataGridList.Name == "dtgridPaymentList")
                 DataListesi = "payments";
+            else if (DataGridList.Name == "customer_list1")
+                DataListesi = "customer_list";
             else DataListesi = DataGridList.Name;
 
             ConnectSql();
-            String sql = "SELECT * FROM " + DataListesi;
+            String sql = "SELECT  *  FROM  " + DataListesi;
             //if (DataGridList.Name == "dtgridSalesList")
             //    sql = sql + " ORDER BY  SALE_CODE";
             DataTable dt = new DataTable();
@@ -131,20 +134,39 @@ namespace WindowsFormsApplication12
             string dateString = date.ToString();
            // DateTime a = Convert.ToDateTime(dateString);
 
-            string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER,DATE) VALUES ('" + StockCode + "','" + Price +
-                                               "','" + Type + "','" + Cinsi + "','" + SalePiece + "', '" + Custumer + "', '" + dateString + "')";
+            string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER) VALUES ('" + StockCode + "','" + Price +
+                                               "','" + Type + "','" + Cinsi + "','" + SalePiece + "', '" + Custumer + "') ";// + Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-mm-dd")) + "')";
 
-
+        //    Convert(DateTime, DateTime.Now.Date.ToString("yyyy-mm-dd"), 102);
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
 
 
             komut.ExecuteNonQuery();
+            ////
+            //string sql2 = "UPDATE customer_list SET TL=@TL ,$=@$ ,€=@€ ,NAKIT=@NAKIT ,K_KARTI=@K_KARTI  ,VERESIYE=@VERESIYE  WHERE ID =@ID";
+            
+            //// "INSERT INTO customer_list (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER,DATE) VALUES ('" + StockCode + "','" + Price +
+            //                                   //"','" + Type + "','" + Cinsi + "','" + SalePiece + "', '" + Custumer + "', '" + dateString + "')";
+
+
+            //MySqlCommand komut2 = new MySqlCommand(sql, baglanti);
+
+            //komut2.Parameters.AddWithValue("@TL", isTenured);
+            //komut2.Parameters.AddWithValue("@$", qualifications);
+            //komut2.Parameters.AddWithValue("@€", previousEmployment);
+            //komut2.Parameters.AddWithValue("@NAKIT ", YourIdValue);
+            //komut2.Parameters.AddWithValue("@K_KARTI", qualifications);
+            //komut2.Parameters.AddWithValue("@VERESIYE", previousEmployment);
+            //komut2.Parameters.AddWithValue("@ID", YourIdValue);
+
+            //komut2.ExecuteNonQuery();
+
             baglanti.Close();
 
 
         }
 
-        public void AddPayment( String PaymentType, int PricePay, String Cinsi, String Type, String Custumer)
+        public void AddPayment(String PaymentType, int PricePay, String Cinsi, String Type, String Custumer) //cus_id
         {
             ConnectSql();
             baglanti.Open();//ID	PAY_TYPE 1:ALINAN 2:YAPILAN ODEMELER	PAY_PRICE	PAY_CARNEL ODEME TIPI	ODEMECINSI ODEME CINSI 

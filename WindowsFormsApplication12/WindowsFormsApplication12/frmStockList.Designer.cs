@@ -31,11 +31,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnQueryStock = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnQueryStock = new System.Windows.Forms.Button();
             this.dtgrdStockList = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -75,30 +75,14 @@
             this.panel2.Size = new System.Drawing.Size(646, 53);
             this.panel2.TabIndex = 3;
             // 
-            // btnQueryStock
+            // label2
             // 
-            this.btnQueryStock.Location = new System.Drawing.Point(306, 3);
-            this.btnQueryStock.Name = "btnQueryStock";
-            this.btnQueryStock.Size = new System.Drawing.Size(75, 47);
-            this.btnQueryStock.TabIndex = 4;
-            this.btnQueryStock.Text = "Sorgula";
-            this.btnQueryStock.UseVisualStyleBackColor = true;
-            this.btnQueryStock.Click += new System.EventHandler(this.btnQueryStock_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(106, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(177, 20);
-            this.dateTimePicker1.TabIndex = 5;
-            this.dateTimePicker1.Value = new System.DateTime(2017, 4, 14, 0, 0, 0, 0);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(106, 30);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(177, 20);
-            this.dateTimePicker2.TabIndex = 6;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Bitiş Tarihi :";
             // 
             // label1
             // 
@@ -109,14 +93,30 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Başlangıç Tarihi :";
             // 
-            // label2
+            // dateTimePicker2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Bitiş Tarihi :";
+            this.dateTimePicker2.Location = new System.Drawing.Point(106, 30);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker2.TabIndex = 6;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(106, 2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.Value = new System.DateTime(2017, 4, 14, 0, 0, 0, 0);
+            // 
+            // btnQueryStock
+            // 
+            this.btnQueryStock.Location = new System.Drawing.Point(263, 2);
+            this.btnQueryStock.Name = "btnQueryStock";
+            this.btnQueryStock.Size = new System.Drawing.Size(59, 50);
+            this.btnQueryStock.TabIndex = 4;
+            this.btnQueryStock.Text = "Sorgula";
+            this.btnQueryStock.UseVisualStyleBackColor = true;
+            this.btnQueryStock.Click += new System.EventHandler(this.btnQueryStock_Click);
             // 
             // dtgrdStockList
             // 

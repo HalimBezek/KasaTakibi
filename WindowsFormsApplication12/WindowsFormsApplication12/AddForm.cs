@@ -16,15 +16,20 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf.fonts;
 
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Globalization;
+
 
 namespace WindowsFormsApplication12
 {
     public partial class AddForm : Form
     {
+        MySqlConnection baglanti;
         
         String lgvCustumer;
         String PaymentType;
-        public AddForm()
+                public AddForm()
         {
             InitializeComponent();
         }
@@ -68,7 +73,9 @@ namespace WindowsFormsApplication12
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            String id;
+            int lvD=0;int lvT=0;int lvE=0;
+            id = cbIDtutar.Text;
             if ((cbStockCode.Text == "") || (tbSalePiece.Text == "") || (tbPrice.Text == "") || (cbType.Text == "") || (cbSalePayType.Text == "") || ((tbCustumerManuel.Text == "") && (cbCustomerOto.Text == "")))
             {
                 MessageBox.Show("Boş alan brakmayınız.", "Bilgilendirme Mesajı");
@@ -77,14 +84,69 @@ namespace WindowsFormsApplication12
             else
             {
                 lgvCustumer = "";
-                if ( cbCustomerOto.Text.Trim() != "")
+                if (cbCustomerOto.Text.Trim() != "")
+                {
                     lgvCustumer = cbCustomerOto.Text;
+                //    id = cbID.GetItemText(1).ToString();
+                }
                 else
                     lgvCustumer = tbCustumerManuel.Text;
 
                 SqlClass sqlConn = new SqlClass();
 
-                sqlConn.AddSale(cbStockCode.Text, Convert.ToInt32(tbSalePiece.Text), Convert.ToInt32(tbPrice.Text), cbType.Text, cbSalePayType.Text, lgvCustumer);
+                sqlConn.AddSale(cbStockCode.Text, Convert.ToInt32(tbSalePiece.Text),
+                    Convert.ToInt32(tbPrice.Text), cbType.Text, cbSalePayType.Text, lgvCustumer);
+
+                if (String.Equals(cbSalePayType.Text, "$"))
+                {lvD =Convert.ToInt32(tbPrice.Text);}
+                    if (String.Equals(cbSalePayType.Text,"TL"))
+                    {lvT =Convert.ToInt32(tbPrice.Text);}
+                        if (String.Equals(cbSalePayType.Text,"€"))
+                        {lvE =Convert.ToInt32(tbPrice.Text);}
+                       
+                
+                String bag;
+                String textt;
+                MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
+
+                build.Server = "localhost";
+                build.UserID = "root";
+                build.Password = "12345678";
+                build.Database = "case_follow";
+                build.Port = 3306;
+
+
+                bag = build.ToString();
+                baglanti = new MySqlConnection(bag);
+
+                baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
+
+
+                String sql3 = "SELECT cl.TL FROM customer_list cl WHERE CL.ID=" + id ;
+                String sql4 = "SELECT cl.DOLAR FROM customer_list cl WHERE CL.ID=" + id;
+                String sql5 = "SELECT cl.EURO FROM customer_list cl WHERE CL.ID= " + id;
+                MySqlCommand komut3 = new MySqlCommand(sql3, baglanti);
+                String SonucTL = komut3.ExecuteScalar().ToString();
+                MySqlCommand komut4 = new MySqlCommand(sql4, baglanti);
+                String SonucDOLAR = komut4.ExecuteScalar().ToString();
+                MySqlCommand komut5 = new MySqlCommand(sql5, baglanti);
+                String SonucEURO = komut5.ExecuteScalar().ToString();
+                komut3.ExecuteNonQuery();//
+                lvT = lvT + Convert.ToInt32(SonucTL);
+                lvE = lvE + Convert.ToInt32(SonucEURO);
+                lvD = lvD + Convert.ToInt32(SonucDOLAR);
+                
+                
+                textt = "UPDATE customer_list SET TL=" + lvT + ", DOLAR=" + lvD + ", EURO=" + lvE + ", ODEMETIPI='" + cbType.Text + "'  WHERE ID =" + Convert.ToInt32(id);
+
+                string sql2 = textt;
+
+                MySqlCommand komut2 = new MySqlCommand(sql2, baglanti);
+
+                komut2.ExecuteNonQuery();//
+                
+                baglanti.Close();
+           
                 cbStockCode.Text = " ";
                 tbSalePiece.Text = " ";
                 tbPrice.Text = " ";
@@ -104,6 +166,9 @@ namespace WindowsFormsApplication12
 
         private void btnAddPayment_Click(object sender, EventArgs e)
         {
+            String id;
+            int lvD = 0; int lvT = 0; int lvE = 0;
+            id = cbIDtutar1.Text;
             if ((tbPricePay.Text == "") || (cb2Cinsi.Text == "") || (cb2Type.Text == "") || ((cbGivePay.Checked == false) && (cbTakePay.Checked == false)) || ((cbCustumerOto2.Text == "") && (tbCustumerManuel2.Text == "")))
             {
                 MessageBox.Show("Boş alan brakmayınız.", "Bilgilendirme Mesajı");
@@ -117,12 +182,76 @@ namespace WindowsFormsApplication12
                     PaymentType = cbGivePay.Text;
                 lgvCustumer = "";
                 if (cbCustumerOto2.Text.Trim() != "")
+                {   
                     lgvCustumer = cbCustumerOto2.Text;
+                }
                 else
                     lgvCustumer = tbCustumerManuel2.Text;
 
                 SqlClass sqlConn = new SqlClass();
-                sqlConn.AddPayment(PaymentType, Convert.ToInt32(tbPricePay.Text), cb2Cinsi.Text, cb2Type.Text, lgvCustumer);
+                sqlConn.AddPayment(PaymentType, Convert.ToInt32(tbPricePay.Text), cb2Cinsi.Text, cb2Type.Text, lgvCustumer);//
+
+
+                ////
+                if (cb2Cinsi.Text.Trim() == "$")//if (String.Equals(cb2Cinsi.Text, "$"))
+                { lvD = Convert.ToInt32(tbPricePay.Text); }
+                if (cb2Cinsi.Text.Trim() == "TL")
+                { lvT = Convert.ToInt32(tbPricePay.Text); }
+                if (cb2Cinsi.Text.Trim() == "€")
+                { lvE = Convert.ToInt32(tbPricePay.Text); }
+
+
+                String bag;
+                String textt;
+                MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
+
+                build.Server = "localhost";
+                build.UserID = "root";
+                build.Password = "12345678";
+                build.Database = "case_follow";
+                build.Port = 3306;
+
+
+                bag = build.ToString();
+                baglanti = new MySqlConnection(bag);
+
+                baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
+
+
+                String sql3 = "SELECT cl.TL FROM customer_list cl WHERE CL.ID=" + id;
+                String sql4 = "SELECT cl.DOLAR FROM customer_list cl WHERE CL.ID=" + id;
+                String sql5 = "SELECT cl.EURO FROM customer_list cl WHERE CL.ID= " + id;
+                MySqlCommand komut3 = new MySqlCommand(sql3, baglanti);
+                String SonucTL = komut3.ExecuteScalar().ToString();
+                MySqlCommand komut4 = new MySqlCommand(sql4, baglanti);
+                String SonucDOLAR = komut4.ExecuteScalar().ToString();
+                MySqlCommand komut5 = new MySqlCommand(sql5, baglanti);
+                String SonucEURO = komut5.ExecuteScalar().ToString();
+                komut3.ExecuteNonQuery();//
+                if (cbTakePay.Checked)
+                {
+                    lvT = lvT + Convert.ToInt32(SonucTL);
+                    lvE = lvE + Convert.ToInt32(SonucEURO);
+                    lvD = lvD + Convert.ToInt32(SonucDOLAR);
+                }
+                else
+                {
+                    lvT = lvT - Convert.ToInt32(SonucTL);
+                    lvE = lvE - Convert.ToInt32(SonucEURO);
+                    lvD = lvD - Convert.ToInt32(SonucDOLAR);
+                }
+
+                textt = "UPDATE customer_list SET TL=" + lvT + ", DOLAR=" + lvD + ", EURO=" + lvE + ", ODEMETIPI='" + cbType.Text + "'  WHERE ID =" + Convert.ToInt32(id);
+
+                string sql2 = textt;
+
+                MySqlCommand komut2 = new MySqlCommand(sql2, baglanti);
+
+                komut2.ExecuteNonQuery();//
+
+                baglanti.Close();
+
+                ////
 
                 cbGivePay.Checked = false;
                 cbTakePay.Checked = false;
@@ -181,20 +310,73 @@ namespace WindowsFormsApplication12
         }
         public void FullCombobax()
         {//customer_list
+            //
+            String bag;
+            MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
+
+            DataSet dSet = new DataSet();
+
+
+            build.Server = "localhost";
+            build.UserID = "root";
+            build.Password = "12345678";
+            build.Database = "case_follow";
+            build.Port = 3306;
+            //
+
             DataGridView stock_list = new DataGridView();
             stock_list.Name = "stock_list";
             DataGridView customer_list = new DataGridView();
             customer_list.Name = "customer_list";
             SqlClass sqlCon = new SqlClass();
+
+            SqlClass connect = new SqlClass();
+            connect.ConnectSql();
+            String sql = "SELECT CONCAT(NAME, ' ', SURNAME) AS NAME, ID FROM customer_list ";
+            //if (DataGridList.Name == "dtgridSalesList")
+              //  sql = sql + " ORDER BY  SALE_CODE";
+            DataTable dtable = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand();
+
+            
+
+
+            bag = build.ToString();
+            baglanti = new MySqlConnection(bag);
+
+            command.CommandText = sql;
+            command.Connection = baglanti;
+            adapter.SelectCommand = command;
+
+            baglanti.Open();
+            adapter.Fill(dtable);
+            adapter.Fill(dSet);
+            customer_list.DataSource = dtable;
+            baglanti.Close();
+
+            //foreach (DataRow dr in dSet.Tables[0].Rows)
+            //{
+            //    tbSalePiece.Text = dr[0].ToString() + " " + dr[1].ToString();
+            //}
+            
             sqlCon.ListData(stock_list, DateTime.Now, DateTime.Now);
             cbStockCode.DataSource = stock_list.DataSource;
             cbStockCode.DisplayMember = "CODE";
-
-            sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
-            cbCustomerOto.DataSource = customer_list.DataSource;
-            cbCustomerOto.DisplayMember = "NAME"; //
             cbCustumerOto2.DataSource = customer_list.DataSource;
             cbCustumerOto2.DisplayMember = "NAME";
+            cbIDtutar1.DataSource = customer_list.DataSource;
+            cbIDtutar1.DisplayMember = "ID";
+            sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
+
+            //sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
+            //tbCustumerManuel.Text = dt["ID"].
+            cbCustomerOto.DataSource = customer_list.DataSource;
+            cbCustomerOto.DisplayMember = "NAME"; //
+         
+            cbIDtutar.DataSource = customer_list.DataSource;
+            cbIDtutar.DisplayMember = "ID";
         }
 
         private void tbPieces_TextChanged(object sender, EventArgs e)

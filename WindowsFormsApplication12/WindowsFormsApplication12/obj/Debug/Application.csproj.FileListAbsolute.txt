@@ -27,5 +27,5 @@ C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplicatio
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.exe.licenses
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.exe
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.pdb
-C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\Application.csprojResolveAssemblyReference.cache
 C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\WindowsFormsApplication12.frmCusumerCase.resources
+C:\Users\klm\Desktop\WindowsFormsApplication12\KasaTakibi\WindowsFormsApplication12\WindowsFormsApplication12\obj\Debug\Application.csprojResolveAssemblyReference.cache

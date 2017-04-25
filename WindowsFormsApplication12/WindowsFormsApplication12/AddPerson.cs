@@ -42,7 +42,7 @@ namespace WindowsFormsApplication12
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (((tbName.Text.Trim() == "") && (tbSurname.Text.Trim() == "")) || (tbfirmname.Text.Trim() == ""))
+            if (((tbName.Text.Trim() == "") || (tbSurname.Text.Trim() == "")) && (tbfirmname.Text.Trim() == ""))
             {
                 MessageBox.Show("Tam ad giriniz ve ya Firma adını giriniz", "Bilgilendirme Mesajı");
 
