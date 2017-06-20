@@ -22,7 +22,8 @@ using System.Globalization;
 namespace WindowsFormsApplication12
 {
     public partial class frmCusumerCase : Form
-    {   
+    {
+       public String lvCL_ID;
         String bag;
         MySqlConnection baglanti;
            
@@ -31,8 +32,8 @@ namespace WindowsFormsApplication12
         //if (DataGridList.Name == "dtgridSalesList")
         //    sql = sql + " ORDER BY  SALE_CODE";
         DataTable dt = new DataTable();
-        DataSet ds = new DataSet();
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        DataSet dataSet;
+        MySqlDataAdapter adapter;
         MySqlCommand command = new MySqlCommand();
         MySqlCommandBuilder cmdb ;
         
@@ -58,66 +59,102 @@ namespace WindowsFormsApplication12
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Close();
-            //SqlClass sqlCon = new SqlClass();
-           // sqlCon.UpdateData(customer_list);
-            
-        }
 
         private void frmCusumerCase_Load(object sender, EventArgs e)
         {
             
             SqlClass sqlCon = new SqlClass();
-            sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
+            //sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
 
-            customer_list.Columns[0].HeaderText = "Numarası";
+            sqlCon.ConnectSql();
+            String sql = "SELECT * FROM customer_list ";
+
+
+                //" SELECT CL.*, CC.*,cl.DATE FROM customer_case cc INNER JOIN customer_list  cl ON cl.ID = cc.CL_ID";
+            //if (DataGridList.Name == "dtgridSalesList")
+            //    sql = sql + " ORDER BY  SALE_CODE";
+            DataTable dt = new DataTable();
+
+            
+            adapter = new MySqlDataAdapter();//MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand();
+
+            command.CommandText = sql;
+            command.Connection = baglanti;
+            adapter.SelectCommand = command;
+
+            //baglanti.Open();
+            adapter.Fill(dt);
+            customer_list.DataSource = dt;
+            baglanti.Close();
+
+            customer_list.Columns[0].HeaderText = "ID";
             customer_list.Columns[1].HeaderText = "Adı";
             customer_list.Columns[2].HeaderText = "Soyadı";
             customer_list.Columns[3].HeaderText = "Firma Adı";
             customer_list.Columns[4].HeaderText = "Telefon Numarası";
             customer_list.Columns[5].HeaderText = "Adres";
-            customer_list.Columns[6].HeaderText = "tl";
-            customer_list.Columns[7].HeaderText = "$";
-         //   customer_list.Columns[7].ValueType = typeof(double);
-            customer_list.Columns[8].HeaderText = "€";
-            customer_list.Columns[9].HeaderText = "Ödeme Tipi";
-            customer_list.Columns[10].HeaderText = "Ödeme Tipi";//"Tarih";
+            customer_list.Columns[6].HeaderText = "Kayıt Tarihi";
 
-
-            customer_list.Columns[5].Visible = false;
-            customer_list.Columns[3].Visible = false;
             customer_list.Columns[0].Visible = false;
-            customer_list.Columns[9].Visible = false;
 
+           // SqlClass sqlCon = new SqlClass();
+            //sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
+
+
+            //sqlCon.ConnectSql();
+            String sqlTotal2 = "SELECT CC.ODEMETIPI,SUM(CC.TL) AS TL, SUM(CC.EURO) AS EURO, SUM(CC.DOLAR) AS DOLAR FROM customer_case cc WHERE 1 GROUP BY CC.ODEMETIPI";
+            //if (DataGridList.Name == "dtgridSalesList")
+            //    sql = sql + " ORDER BY  SALE_CODE";
+            DataTable dtTotal2 = new DataTable();
+
+            MySqlDataAdapter adapterTotal2 = new MySqlDataAdapter();
+            MySqlCommand commandTotal2 = new MySqlCommand();
+
+            commandTotal2.CommandText = sqlTotal2;
+            commandTotal2.Connection = baglanti;
+            adapterTotal2.SelectCommand = commandTotal2;
+
+            //baglanti.Open();
+            adapterTotal2.Fill(dtTotal2);
+            grdCase_Total.DataSource = dtTotal2;
+            baglanti.Close();
+
+            grdCase_Total.Columns[0].HeaderText = "Ödeme Tipi";
+            grdCase_Total.Columns[1].HeaderText = "TL";
+            grdCase_Total.Columns[2].HeaderText = "€";
+            grdCase_Total.Columns[3].HeaderText = "$";
+
+          //  customer_list.Columns[0].Visible = false;
             
+
+
 
             String id;
             int lvD=0;int lvT=0;int lvE=0;
                   
                 
                 
-                MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
+                //MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
 
-                build.Server = "localhost";
-                build.UserID = "root";
-                build.Password = "12345678";
-                build.Database = "case_follow";
-                build.Port = 3306;
+                //build.Server = "localhost";
+                //build.UserID = "root";
+                //build.Password = "12345678";
+                //build.Database = "case_follow";
+                //build.Port = 3306;
 
 
-                bag = build.ToString();
-                baglanti = new MySqlConnection(bag);
+                //bag = build.ToString();
+                //baglanti = new MySqlConnection(bag);
 
-                baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
+                //baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
 
-                /*Nakit
+               /* //Nakit
     Kredi Kartı
     Veresiye*/
 
                
-
+/*
                 String sql3 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Nakit'";
                 String sql4 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Nakit'";
                 String sql5 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Nakit'";
@@ -157,9 +194,9 @@ namespace WindowsFormsApplication12
                 textBoxVEURO.Text = SonucVEURO;
 
 
-                String sql = "SELECT * FROM customer_list ";
+                String sql2 = "SELECT * FROM customer_list ";
 
-                command.CommandText = sql;
+                command.CommandText = sql2;
                 command.Connection = baglanti;
                 adapter.SelectCommand = command;
 
@@ -168,7 +205,7 @@ namespace WindowsFormsApplication12
                 adapter.Fill(ds, "customer_list");
 
                 customer_list.DataSource = ds.Tables[0];// dt;
-                baglanti.Close();
+                baglanti.Close();*/
 
             }
 
@@ -220,41 +257,6 @@ namespace WindowsFormsApplication12
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        
-        }
-
-        private void btnQueryStock_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void customer_list_CausesValidationChanged(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void customer_list_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            
-        }
-
-        private void customer_list_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void customer_list_CursorChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void customer_list_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -266,11 +268,7 @@ namespace WindowsFormsApplication12
             //MessageBox.Show("cursor change  change3", "cursor changeEnter");
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void customer_list_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
           String a =   customer_list.TabIndex.ToString();
@@ -281,66 +279,139 @@ namespace WindowsFormsApplication12
             Close();
         }
 
-        private void customer_list_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+    
+        private void button1_Click_2(object sender, EventArgs e)
         {
-           // this.adapter.Update(this.dt);
+            lvCL_ID = "0";
+            try
+            {
+                if (customer_list.CurrentRow.Cells["CL_ID"].Value.ToString() == "")
+                    lvCL_ID = "0";
+                else
+                  lvCL_ID = customer_list.CurrentRow.Cells["CL_ID"].Value.ToString();
+
+            }
+            catch
+            {
+                lvCL_ID = "0";
+            }
+            if (Convert.ToInt32(lvCL_ID) > 0)
+            {
+                frmCustomDetailList detail = new frmCustomDetailList();
+                detail.ArrangeForm(lvCL_ID);
+                // detail.Show();
+            }
         }
 
-        private void button2_Click_2(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            baglanti = new MySqlConnection(bag);
+            DialogResult result = new DialogResult();
 
-           
-            cmdb = new MySqlCommandBuilder(adapter);
-            adapter.Update(ds, "customer_list");
-            baglanti.Open();
-            String sql3 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Nakit'";
-            String sql4 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Nakit'";
-            String sql5 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Nakit'";
-            String sql6 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Kredi Kartı'";
-            String sql7 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Kredi Kartı'";
-            String sql8 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Kredi Kartı'";
-            String sql9 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Veresiye'";
-            String sql11 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Veresiye'";
-            String sql12 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Veresiye'";
-            MySqlCommand komut3 = new MySqlCommand(sql3, baglanti);
-            String SonucTL = komut3.ExecuteScalar().ToString();
-            MySqlCommand komut4 = new MySqlCommand(sql4, baglanti);
-            String SonucDOLAR = komut4.ExecuteScalar().ToString();
-            MySqlCommand komut5 = new MySqlCommand(sql5, baglanti);
-            String SonucEURO = komut5.ExecuteScalar().ToString();
-            MySqlCommand komut6 = new MySqlCommand(sql6, baglanti);
-            String SonucKKTL = komut6.ExecuteScalar().ToString();
-            MySqlCommand komut7 = new MySqlCommand(sql7, baglanti);
-            String SonucKKDOLAR = komut7.ExecuteScalar().ToString();
-            MySqlCommand komut8 = new MySqlCommand(sql8, baglanti);
-            String SonucKKEURO = komut8.ExecuteScalar().ToString();
-            MySqlCommand komut9 = new MySqlCommand(sql9, baglanti);
-            String SonucVTL = komut9.ExecuteScalar().ToString();
-            MySqlCommand komut10 = new MySqlCommand(sql11, baglanti);
-            String SonucVDOLAR = komut10.ExecuteScalar().ToString();
-            MySqlCommand komut11 = new MySqlCommand(sql12, baglanti);
-            String SonucVEURO = komut11.ExecuteScalar().ToString();
-            komut3.ExecuteNonQuery();//
-            textBoxNTL.Text = SonucTL;
-            textBoxNDOLAR.Text = SonucDOLAR;
-            textBoxNEURO.Text = SonucEURO;
-            textBoxKKTL.Text = SonucKKTL;
-            textBoxKKDOLAR.Text = SonucKKDOLAR;
-            textBoxKKEURO.Text = SonucKKEURO;
-            textBoxVTL.Text = SonucVTL;
-            textBoxVDOLAR.Text = SonucVDOLAR;
-            textBoxVEURO.Text = SonucVEURO;
+            result = MessageBox.Show("Veriyi güncellemek istiyormusunuz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //baglanti = new MySqlConnection(bag);
+            if (result == DialogResult.Yes)
+            { 
+                try{
+                   
+                    cmdb = new MySqlCommandBuilder(adapter);
+          /*  DataSet uds = new DataSet();
+            uds = dataSet.GetChanges(DataRowState.Modified);
+            
+            adapter.Update(uds);*/
+
+                    adapter.Update(dataSet, "customer_case");
+                    if (baglanti.State == ConnectionState.Closed)
+                      baglanti.Open();
+
+                    String sqlTotal2 = "SELECT CC.ODEMETIPI,SUM(CC.TL) AS TL, SUM(CC.EURO) AS EURO, SUM(CC.DOLAR) AS DOLAR FROM customer_case cc WHERE 1 GROUP BY CC.ODEMETIPI";
+                    //if (DataGridList.Name == "dtgridSalesList")
+                    //    sql = sql + " ORDER BY  SALE_CODE";
+                    DataTable dtTotal2 = new DataTable();
+
+                    MySqlDataAdapter adapterTotal2 = new MySqlDataAdapter();
+                    MySqlCommand commandTotal2 = new MySqlCommand();
+
+                    commandTotal2.CommandText = sqlTotal2;
+                    commandTotal2.Connection = baglanti;
+                    adapterTotal2.SelectCommand = commandTotal2;
+
+                    //baglanti.Open();
+                    adapterTotal2.Fill(dtTotal2);
+                    grdCase_Total.DataSource = dtTotal2;
+                    baglanti.Close();
+
+                    grdCase_Total.Columns[0].HeaderText = "Ödeme Tipi";
+                    grdCase_Total.Columns[1].HeaderText = "TL";
+                    grdCase_Total.Columns[2].HeaderText = "€";
+                    grdCase_Total.Columns[3].HeaderText = "$";   
 
 
 
-            MessageBox.Show("Kayıt güncellendi");
+
+                }
+                catch (global::System.Exception ex)
+                {
+                    MessageBox.Show((ex.Message + (" : " + "Bir hata olustu, lütfen daha sonra tekrar deneyiniz...")), "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+
+            }
+            
+         
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void customer_list_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-          
-           
+            String lvCL_ID;
+            //dataSet = null;
+            try
+            {
+                lvCL_ID = customer_list.CurrentRow.Cells["ID"].Value.ToString();
+            }
+            catch
+            {
+                lvCL_ID = "0";
+            }
+
+         /*   SqlClass sqlCon = new SqlClass();
+
+            String bag;
+            DataSet dSet = new DataSet();
+
+
+
+            SqlClass connect = new SqlClass();
+            connect.ConnectSql();*/
+
+            String sqlTotal3 = "SELECT * FROM customer_case CC where CC.CL_ID = " + "'"+ lvCL_ID + "'";
+            //if (DataGridList.Name == "dtgridSalesList")
+            //    sql = sql + " ORDER BY  SALE_CODE";
+            DataTable dtTotal3 = new DataTable();
+            dataSet = new DataSet();
+
+             adapter = new MySqlDataAdapter();
+            MySqlCommand commandTotal3 = new MySqlCommand();
+
+            commandTotal3.CommandText = sqlTotal3;
+            commandTotal3.Connection = baglanti;
+            adapter.SelectCommand = commandTotal3;
+            if (baglanti.State == ConnectionState.Closed)
+              baglanti.Open();
+
+            adapter.Fill(dtTotal3);
+            adapter.Fill(dataSet, "customer_case");
+            grdCusCasDetail.DataSource = dataSet.Tables[0];//dtTotal3;
+            baglanti.Close();
+
+            grdCusCasDetail.Columns[0].HeaderText = "CL_ID";
+            grdCusCasDetail.Columns[1].HeaderText = "TL";
+            grdCusCasDetail.Columns[2].HeaderText = "€";
+            grdCusCasDetail.Columns[3].HeaderText = "$";
+            grdCusCasDetail.Columns[4].HeaderText = "Ödeme Tipi";
+            grdCusCasDetail.Columns[5].HeaderText = "ID";
+
+            grdCusCasDetail.Columns[0].Visible = false;
+            grdCusCasDetail.Columns[5].Visible = false;
         }
     }
 }

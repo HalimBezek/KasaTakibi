@@ -46,17 +46,17 @@
             // 
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 286);
+            this.panel1.Location = new System.Drawing.Point(0, 310);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(571, 29);
+            this.panel1.Size = new System.Drawing.Size(665, 42);
             this.panel1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(474, 3);
+            this.button1.Location = new System.Drawing.Point(568, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 36);
             this.button1.TabIndex = 2;
             this.button1.Text = "Kapat";
             this.button1.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(571, 53);
+            this.panel2.Size = new System.Drawing.Size(665, 53);
             this.panel2.TabIndex = 4;
             // 
             // label2
@@ -130,7 +130,7 @@
             this.dtgridPaymentList.Name = "dtgridPaymentList";
             this.dtgridPaymentList.ReadOnly = true;
             this.dtgridPaymentList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dtgridPaymentList.Size = new System.Drawing.Size(571, 233);
+            this.dtgridPaymentList.Size = new System.Drawing.Size(665, 257);
             this.dtgridPaymentList.TabIndex = 5;
             // 
             // frmPaymentList
@@ -138,7 +138,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(571, 315);
+            this.ClientSize = new System.Drawing.Size(665, 352);
             this.Controls.Add(this.dtgridPaymentList);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

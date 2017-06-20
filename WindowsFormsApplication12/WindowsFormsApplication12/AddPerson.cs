@@ -64,8 +64,8 @@ namespace WindowsFormsApplication12
 
         private void AddPerson_FormClosed(object sender, FormClosedEventArgs e)
         {
-            AddForm Addfrm = new AddForm();
-            Addfrm.FullCombobax();
+            //AddForm Addfrm = new AddForm();
+            //Addfrm.FullCombobax();
         }
 
         private void tbTelNum_TextChanged(object sender, EventArgs e)

@@ -37,6 +37,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnQueryStock = new System.Windows.Forms.Button();
             this.dtgridSalesList = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgridSalesList)).BeginInit();
@@ -46,17 +48,17 @@
             // 
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 303);
+            this.panel1.Location = new System.Drawing.Point(0, 407);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 29);
+            this.panel1.Size = new System.Drawing.Size(766, 48);
             this.panel1.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(431, 3);
+            this.button1.Location = new System.Drawing.Point(669, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 39);
             this.button1.TabIndex = 2;
             this.button1.Text = "Kapat";
             this.button1.UseVisualStyleBackColor = true;
@@ -64,6 +66,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dateTimePicker2);
@@ -72,7 +76,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(528, 53);
+            this.panel2.Size = new System.Drawing.Size(766, 53);
             this.panel2.TabIndex = 4;
             // 
             // label2
@@ -129,15 +133,32 @@
             this.dtgridSalesList.Name = "dtgridSalesList";
             this.dtgridSalesList.ReadOnly = true;
             this.dtgridSalesList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dtgridSalesList.Size = new System.Drawing.Size(528, 250);
+            this.dtgridSalesList.Size = new System.Drawing.Size(766, 354);
             this.dtgridSalesList.TabIndex = 6;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(342, 30);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(139, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(339, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Stok Adında Ara";
             // 
             // frmSalesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(528, 332);
+            this.ClientSize = new System.Drawing.Size(766, 455);
             this.Controls.Add(this.dtgridSalesList);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -164,5 +185,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnQueryStock;
         private System.Windows.Forms.DataGridView dtgridSalesList;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

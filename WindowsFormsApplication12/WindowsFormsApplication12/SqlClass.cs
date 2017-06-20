@@ -19,6 +19,7 @@ namespace WindowsFormsApplication12
         MySqlConnection baglanti;
         String DataListesi;
         DateTimePicker dtp;
+        String OTipi;
        
         public void ConnectSql()
         {
@@ -71,7 +72,7 @@ namespace WindowsFormsApplication12
 
         }
 
-        public void AddStock(String Name, String Code, int Pieces,String Customer,double Price, String Cinsi)
+        public void AddStock(String Name, String Code, int Pieces,String Customer,double Price, String Cinsi, String Tipi)
         {
             string yr,m, d , t;
             DateTime  DTIME;
@@ -86,8 +87,7 @@ namespace WindowsFormsApplication12
             ConnectSql();
             baglanti.Open();//	ID	NAME STOK ADI	CODE STOK KODU	PIECE KAÇ ADET	CUSTOMER KIM ALDI	BRAND URUN MARKASI
 
-            string sql = "INSERT INTO stock_list (NAME, CODE, PIECE, CUSTOMER, PRICE, ODEMECINSI) VALUES ('" + Name + "','" + Code +
-                                               "','" + Pieces + "','" + Customer + "','" + Price + "','" + Cinsi + "')";
+            string sql = "INSERT INTO stock_list (NAME, CODE) VALUES ('" + Name + "','" + Code + "')";
 
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
@@ -107,31 +107,26 @@ namespace WindowsFormsApplication12
             d = DateTime.Now.Date.Day.ToString();
             DTIME = DateTime.Now.Date;
             t = yr + "-" + m + "-" + d;
-            //dt = DTIME.ToString("yyyy.mm.dd");
-            //   DTIME = DateTime.ParseExact(dt, @"yyyy.mm.dd",); //Convert.ToDateTime(dt);
-            //  DTIME = Convert.ToDateTime(t, "yyyy-mm-dd");
+
             ConnectSql();
-            baglanti.Open();//		ID	NAME	SURNAME	FIRM_NAME	TEL_NO	ADRESS
-
+            baglanti.Open();
+                            
             string sql = "INSERT INTO customer_list (NAME, SURNAME, FIRM_NAME, TEL_NO, ADRESS) VALUES ('" + Name + "','" + Surname +
-                                               "','" + Firm_name + "','" + Tel_number + "','" + Adress + "')";
-
+                                                "','" + Firm_name + "','" + Tel_number + "','" + Adress + "')";
 
             MySqlCommand komut = new MySqlCommand(sql, baglanti);
 
-
             komut.ExecuteNonQuery();
             baglanti.Close();
-
-
+            
         }
         //cbStockCode.Text, Convert.ToInt32(tbSalePiece.Text), Convert.ToInt32(tbPrice.Text), Convert.ToInt32(cbType.Text), cbCinsi.Text
         public void AddSale(String StockCode, int SalePiece, int Price, String Type, String Cinsi, String Custumer)
         {
             ConnectSql();
             baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
-            DateTime date = DateTime.Now;
-            string dateString = date.ToString();
+         ///   DateTime date = DateTime.Now;
+           // string dateString = date.ToString();
            // DateTime a = Convert.ToDateTime(dateString);
 
             string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER) VALUES ('" + StockCode + "','" + Price +
@@ -168,7 +163,7 @@ namespace WindowsFormsApplication12
 
         public void AddPayment(String PaymentType, int PricePay, String Cinsi, String Type, String Custumer) //cus_id
         {
-            ConnectSql();
+           /* ConnectSql();
             baglanti.Open();//ID	PAY_TYPE 1:ALINAN 2:YAPILAN ODEMELER	PAY_PRICE	PAY_CARNEL ODEME TIPI	ODEMECINSI ODEME CINSI 
 
             string sql = "INSERT INTO payments (PAY_TYPE, PAY_PRICE, PAY_CARNEL, ODEMECINSI,CUSTOMER) VALUES ('" + PaymentType + "','" + PricePay +
@@ -179,7 +174,44 @@ namespace WindowsFormsApplication12
 
 
             komut.ExecuteNonQuery();
-            baglanti.Close();
+            baglanti.Close();*/
+
+
+        }
+
+        public void CustumerCase(String PaymentType, int PricePay, String Cinsi, String Type, String Custumer) //cus_id
+        {
+            DataTable dtable = new DataTable();
+            ConnectSql();
+            string sql = "SELECT " +
+                            "  CONCAT(CL.NAME, ' ' , CL.SURNAME) AS CL_NAME, " + 
+                            " SUM((DSC.EURO) *(DSC.PIECES)) AS CPEURO," +
+                            " SUM((DSC.DOLAR) *(DSC.PIECES)) AS CPDOLAR," +
+                            "  SUM((DSC.TL) *(DSC.PIECES)) AS CPTL," +
+                            "   DSC.ODEMETIPI " + 
+                            "FROM      customer_list CL " +
+                            "JOIN" +
+                            "daily_sale_case DSC" +
+                            "ON" +
+                            "   CL.ID = DSC.CL_ID" +
+                            "GROUP BY" + 
+                            "   DSC.CL_ID," +
+                            "  DSC.ODEMETIPI" ;
+
+
+             DataTable dt = new DataTable();
+
+             MySqlDataAdapter adapter = new MySqlDataAdapter();
+             MySqlCommand command = new MySqlCommand();
+
+             command.CommandText = sql;
+             command.Connection = baglanti;
+             adapter.SelectCommand = command;
+
+             baglanti.Open();
+             adapter.Fill(dt);
+             dtable = dt;
+             baglanti.Close();
 
 
         }

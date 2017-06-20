@@ -56,14 +56,15 @@ namespace WindowsFormsApplication12
             dtgridPaymentList.Columns[0].HeaderText = "Numarası";
             dtgridPaymentList.Columns[1].HeaderText = "Ödeme Şekli";
             dtgridPaymentList.Columns[2].HeaderText = "Ödeme Tipi";
-            dtgridPaymentList.Columns[3].HeaderText = "Miktar";
-            dtgridPaymentList.Columns[4].HeaderText = "Ödeme Cinsi";
-            dtgridPaymentList.Columns[5].HeaderText = "Müşteri";
-            dtgridPaymentList.Columns[7].HeaderText = "Tarih";
+            dtgridPaymentList.Columns[3].HeaderText = "TL";
+            dtgridPaymentList.Columns[4].HeaderText = "Euro";
+            dtgridPaymentList.Columns[5].HeaderText = "Dolar";
+            dtgridPaymentList.Columns[6].HeaderText = "Müşteri_id";
+            dtgridPaymentList.Columns[7].HeaderText = "Müşteri";
+            dtgridPaymentList.Columns[8].HeaderText = "Tarih";
 
             dtgridPaymentList.Columns[0].Visible = false;
             dtgridPaymentList.Columns[6].Visible = false;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,10 +106,12 @@ namespace WindowsFormsApplication12
             dtgridPaymentList.Columns[0].HeaderText = "Numarası";
             dtgridPaymentList.Columns[1].HeaderText = "Ödeme Şekli";
             dtgridPaymentList.Columns[2].HeaderText = "Ödeme Tipi";
-            dtgridPaymentList.Columns[3].HeaderText = "Miktar";
-            dtgridPaymentList.Columns[4].HeaderText = "Ödeme Cinsi";
-            dtgridPaymentList.Columns[5].HeaderText = "Müşteri";
-            dtgridPaymentList.Columns[7].HeaderText = "Tarih";
+            dtgridPaymentList.Columns[3].HeaderText = "TL";
+            dtgridPaymentList.Columns[4].HeaderText = "Euro";
+            dtgridPaymentList.Columns[5].HeaderText = "Dolar";
+            dtgridPaymentList.Columns[6].HeaderText = "Müşteri_id";
+            dtgridPaymentList.Columns[7].HeaderText = "Müşteri";
+            dtgridPaymentList.Columns[8].HeaderText = "Tarih";
 
             dtgridPaymentList.Columns[0].Visible = false;
             dtgridPaymentList.Columns[6].Visible = false;
