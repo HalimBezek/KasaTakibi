@@ -31,13 +31,12 @@ namespace WindowsFormsApplication12
         public frmKisiListesi()
         {
             InitializeComponent();
-;
-            build.Server = "localhost";
+
+            build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "12345678";
+            build.Password = "";
             build.Database = "case_follow";
             build.Port = 3306;
-
 
             bag = build.ToString();
             baglanti = new MySqlConnection(bag);

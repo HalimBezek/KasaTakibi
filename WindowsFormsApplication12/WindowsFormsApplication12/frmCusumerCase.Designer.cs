@@ -37,25 +37,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel6 = new System.Windows.Forms.Panel();
             this.grdCusCasDetail = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.customer_list = new System.Windows.Forms.DataGridView();
-            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCase_Total)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCusCasDetail)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customer_list)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
@@ -147,35 +147,6 @@
             this.panel1.Size = new System.Drawing.Size(778, 367);
             this.panel1.TabIndex = 4;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(778, 100);
-            this.panel2.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(3, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Müşteri Kasası";
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.Location = new System.Drawing.Point(651, 1);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(126, 99);
-            this.panel3.TabIndex = 3;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.splitter1);
@@ -186,6 +157,14 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(778, 267);
             this.panel8.TabIndex = 12;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(361, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 267);
+            this.splitter1.TabIndex = 15;
+            this.splitter1.TabStop = false;
             // 
             // panel6
             // 
@@ -232,13 +211,34 @@
             this.customer_list.TabIndex = 13;
             this.customer_list.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.customer_list_CellEnter);
             // 
-            // splitter1
+            // panel2
             // 
-            this.splitter1.Location = new System.Drawing.Point(361, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 267);
-            this.splitter1.TabIndex = 15;
-            this.splitter1.TabStop = false;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(778, 100);
+            this.panel2.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(3, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Müşteri Kasası";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.Location = new System.Drawing.Point(651, 1);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(126, 99);
+            this.panel3.TabIndex = 3;
             // 
             // frmCusumerCase
             // 
@@ -257,13 +257,13 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCase_Total)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCusCasDetail)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customer_list)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
