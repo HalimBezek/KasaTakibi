@@ -42,7 +42,7 @@ namespace WindowsFormsApplication12
             InitializeComponent();
             build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "";
+            build.Password = "12345678";
             build.Database = "case_follow";
             build.Port = 3306;
 
@@ -85,14 +85,42 @@ namespace WindowsFormsApplication12
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string yr3, m3, d3;
+            string yr, m, d, yr2, m2, d2;
 
-            //SqlClass sqlCon = new SqlClass();
-            //sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
+            yr = dateTimePicker1.Value.Year.ToString();
+            m = dateTimePicker1.Value.Month.ToString();
+            d = dateTimePicker1.Value.Day.ToString();
+            yr2 = dateTimePicker2.Value.Year.ToString();
+            m2 = dateTimePicker2.Value.Month.ToString();
+            d2 = dateTimePicker2.Value.Day.ToString();
+
+            yr3 = DateTime.Now.Year.ToString();
+            m3 = DateTime.Now.Month.ToString();
+            d3 = DateTime.Now.Day.ToString();
+
+            int d4 = Convert.ToInt32(d3) + 1;
+
+            //
+
             customer_list.DataSource = null;
+            String sql = "";
            
+            if (checkBox1.Checked == true)
+            {
+                 sql = "SELECT SLC.KISI_ADI, SLC.ODEMETIPI, SLC.* FROM stock_list_case SLC WHERE SLC.CL_ID = " + Convert.ToInt32(cl_id) +
+                      " AND DATE BETWEEN '" + yr + "-" + m + "-" + d + "' AND " + "'" + yr2 + "-" + m2 + "-" + d2 + "'";
+
+            }
+            else
+            {
+                 sql = "SELECT SLC.KISI_ADI, SLC.ODEMETIPI, SLC.* FROM stock_list_case SLC WHERE SLC.CL_ID = " + Convert.ToInt32(cl_id) + " AND DATE BETWEEN '"
+                              + yr3 + "-" + m3 + "-" + d3 + "' AND " + "'" + yr3 + "-" + m3 + "-" + d4 + "'";
+
+            }
 
             //sqlCon.ConnectSql();
-            String sql = "SELECT SLC.KISI_ADI, SLC.ODEMETIPI, SLC.* FROM stock_list_case SLC WHERE SLC.CL_ID = " + Convert.ToInt32(cl_id);
+          
             //if (DataGridList.Name == "dtgridSalesList")
             //    sql = sql + " ORDER BY  SALE_CODE";
             DataTable dt = new DataTable();
@@ -115,8 +143,12 @@ namespace WindowsFormsApplication12
             customer_list.Columns[2].HeaderText = "detayId";
             customer_list.Columns[3].HeaderText = "CL_ID";
             customer_list.Columns[4].HeaderText = "TL";
+            customer_list.Columns[4].DefaultCellStyle.Format = "N";
+
             customer_list.Columns[5].HeaderText = "Dolar";
+            customer_list.Columns[5].DefaultCellStyle.Format = "N";
             customer_list.Columns[6].HeaderText = "Euro";
+            customer_list.Columns[6].DefaultCellStyle.Format = "N";
             customer_list.Columns[7].HeaderText = "Kaç Adet?";
             customer_list.Columns[8].HeaderText = "Ödeme Tipi";
             customer_list.Columns[9].HeaderText = "Kişi/Firma Adı";
@@ -132,9 +164,41 @@ namespace WindowsFormsApplication12
         private void button3_Click(object sender, EventArgs e)
         {
             customer_list.DataSource = null;
+
+            string yr3, m3, d3;
+            string yr, m, d, yr2, m2, d2;
+
+            yr = dateTimePicker1.Value.Year.ToString();
+            m = dateTimePicker1.Value.Month.ToString();
+            d = dateTimePicker1.Value.Day.ToString();
+            yr2 = dateTimePicker2.Value.Year.ToString();
+            m2 = dateTimePicker2.Value.Month.ToString();
+            d2 = dateTimePicker2.Value.Day.ToString();
+
+            yr3 = DateTime.Now.Year.ToString();
+            m3 = DateTime.Now.Month.ToString();
+            d3 = DateTime.Now.Day.ToString();
+
+            int d4 = Convert.ToInt32(d3) + 1;
+
+
+            String sql2 = "";
+
+            if (checkBox1.Checked == true) {
+                sql2 = "SELECT concat(sl.NAME,' ',concat('(',sl.CODE,')')) as SNAME, CONCAT(CL.NAME, ' ', CL.SURNAME) AS FNAME, dsc.* from daily_sale_case dsc"+
+                        " JOIN stock_list sl ON DSC.SL_ID = SL.ID JOIN customer_list CL ON CL.ID = DSC.CL_ID where cl.ID = " + Convert.ToInt32(cl_id) +
+                        " AND  dsc.DATE BETWEEN '" + yr + "-" + m + "-" + d + "' AND " + "'" + yr2 + "-" + m2 + "-" + d2 + "'";
+
+            }
+            else{
+                sql2 = "SELECT concat(sl.NAME,' ',concat('(',sl.CODE,')')) as SNAME, CONCAT(CL.NAME, ' ', CL.SURNAME) AS FNAME, dsc.* from daily_sale_case dsc"+
+                        " JOIN stock_list sl ON DSC.SL_ID = SL.ID JOIN customer_list CL ON CL.ID = DSC.CL_ID where cl.ID = " + Convert.ToInt32(cl_id) + " AND dsc.DATE BETWEEN '"
+                                + yr3 + "-" + m3 + "-" + d3 + "' AND " + "'" + yr3 + "-" + m3 + "-" + d4 + "'" ;
+
+
+            }
+                
             
-            String sql2 = "SELECT concat(sl.NAME,' ',concat('(',sl.CODE,')')) as SNAME, CONCAT(CL.NAME, ' ', CL.SURNAME) AS FNAME, dsc.* from daily_sale_case dsc"+
-                        " JOIN stock_list sl ON DSC.SL_ID = SL.ID JOIN customer_list CL ON CL.ID = DSC.CL_ID where cl.ID = " + Convert.ToInt32(cl_id);
             //if (DataGridList.Name == "dtgridSalesList")
             //    sql = sql + " ORDER BY  SALE_CODE";
             DataTable dt2 = new DataTable();
@@ -158,8 +222,11 @@ namespace WindowsFormsApplication12
             customer_list.Columns[3].HeaderText = "CL_ID";
             customer_list.Columns[4].HeaderText = "SL_ID";
             customer_list.Columns[5].HeaderText = "TL";
+            customer_list.Columns[5].DefaultCellStyle.Format = "N";
             customer_list.Columns[6].HeaderText = "Dolar";
+            customer_list.Columns[6].DefaultCellStyle.Format = "N";
             customer_list.Columns[7].HeaderText = "Euro";
+            customer_list.Columns[7].DefaultCellStyle.Format = "N";
             customer_list.Columns[8].HeaderText = "Adet Sayısı";
             customer_list.Columns[9].HeaderText = "Ödeme Tipi";
             customer_list.Columns[10].HeaderText = "Tarih";
@@ -175,12 +242,38 @@ namespace WindowsFormsApplication12
         {
 
             customer_list.DataSource = null;
+            String sql3 = "";
+            string yr3, m3, d3;
+            string yr, m, d, yr2, m2, d2;
+
+            yr = dateTimePicker1.Value.Year.ToString();
+            m = dateTimePicker1.Value.Month.ToString();
+            d = dateTimePicker1.Value.Day.ToString();
+            yr2 = dateTimePicker2.Value.Year.ToString();
+            m2 = dateTimePicker2.Value.Month.ToString();
+            d2 = dateTimePicker2.Value.Day.ToString();
+
+            yr3 = DateTime.Now.Year.ToString();
+            m3 = DateTime.Now.Month.ToString();
+            d3 = DateTime.Now.Day.ToString();
+
+            int d4 = Convert.ToInt32(d3) + 1;
+
        
 
             if (baglanti.State != ConnectionState.Open)
                 baglanti.Open();
-
-            String sql3 = "SELECT PC.* FROM customer_list CL JOIN payments PC ON PC.CL_ID = CL.ID where cl.ID = " + Convert.ToInt32(cl_id);
+            if (checkBox1.Checked == true)
+            {
+               sql3 = "SELECT PC.* FROM customer_list CL JOIN payments PC ON PC.CL_ID = CL.ID where cl.ID = " + Convert.ToInt32(cl_id) +
+                    " AND  PC.DATE BETWEEN '" + yr + "-" + m + "-" + d + "' AND " + "'" + yr2 + "-" + m2 + "-" + d2 + "'";
+            }
+            else
+            {
+                sql3 = "SELECT PC.* FROM customer_list CL JOIN payments PC ON PC.CL_ID = CL.ID where cl.ID = " + Convert.ToInt32(cl_id) + " AND PC.DATE BETWEEN '"
+                                + yr3 + "-" + m3 + "-" + d3 + "' AND " + "'" + yr3 + "-" + m3 + "-" + d4 + "'";
+            }
+            
             //if (DataGridList.Name == "dtgridSalesList")
             //    sql = sql + " ORDER BY  SALE_CODE";
             DataTable dt3 = new DataTable();
@@ -202,8 +295,11 @@ namespace WindowsFormsApplication12
             customer_list.Columns[1].HeaderText = "Ödeme Şekli";
             customer_list.Columns[2].HeaderText = "Ödeme Tipi";
             customer_list.Columns[3].HeaderText = "TL";
+            customer_list.Columns[3].DefaultCellStyle.Format = "N";
             customer_list.Columns[4].HeaderText = "Euro";
+            customer_list.Columns[4].DefaultCellStyle.Format = "N";
             customer_list.Columns[5].HeaderText = "Dolar";
+            customer_list.Columns[5].DefaultCellStyle.Format = "N";
             customer_list.Columns[6].HeaderText = "Müşteri_id";
             customer_list.Columns[7].HeaderText = "Müşteri";
             customer_list.Columns[8].HeaderText = "Tarih";

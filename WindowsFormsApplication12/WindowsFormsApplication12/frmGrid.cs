@@ -13,10 +13,12 @@ namespace WindowsFormsApplication12
     public partial class frmGrid : Form
     {
         public DataGridView lgvgriddata;
+        public DataGridView lgvgriddata2;
         public frmGrid()
         {
             InitializeComponent();
             lgvgriddata = datagrid;
+            lgvgriddata2 = datagrid1;
         }
 
         private void denemesql_Load(object sender, EventArgs e)

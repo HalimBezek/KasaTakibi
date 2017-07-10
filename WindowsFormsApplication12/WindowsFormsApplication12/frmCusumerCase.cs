@@ -43,7 +43,7 @@ namespace WindowsFormsApplication12
             InitializeComponent();
             build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "";
+            build.Password = "12345678";
             build.Database = "case_follow";
             build.Port = 3306;
 
@@ -63,12 +63,27 @@ namespace WindowsFormsApplication12
 
         private void frmCusumerCase_Load(object sender, EventArgs e)
         {
+            string yr3, m3, d3;
+            string yr, m, d, yr2, m2, d2;
+
+            yr = dateTimePicker1.Value.Year.ToString();
+            m = dateTimePicker1.Value.Month.ToString();
+            d = dateTimePicker1.Value.Day.ToString();
+            yr2 = dateTimePicker2.Value.Year.ToString();
+            m2 = dateTimePicker2.Value.Month.ToString();
+            d2 = dateTimePicker2.Value.Day.ToString();
+
+            yr3 = DateTime.Now.Year.ToString();
+            m3 = DateTime.Now.Month.ToString();
+            d3 = DateTime.Now.Day.ToString();
+
+            int d4 = Convert.ToInt32(d3) + 1;
             
             SqlClass sqlCon = new SqlClass();
             //sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
 
             sqlCon.ConnectSql();
-            String sql = "SELECT * FROM customer_list ";
+            String sql = "SELECT CL.*, CL.ID AS CL_ID FROM customer_list CL Where CL.DATE BETWEEN '" + yr + "-" + m + "-" + d + "' AND " + "'" + yr2 + "-" + m2 + "-" + d2 + "'";
 
 
                 //" SELECT CL.*, CC.*,cl.DATE FROM customer_case cc INNER JOIN customer_list  cl ON cl.ID = cc.CL_ID";
@@ -92,19 +107,23 @@ namespace WindowsFormsApplication12
             customer_list.Columns[0].HeaderText = "ID";
             customer_list.Columns[1].HeaderText = "Adı";
             customer_list.Columns[2].HeaderText = "Soyadı";
-            customer_list.Columns[3].HeaderText = "Firma Adı";
+            customer_list.Columns[3].HeaderText = "Adres";
             customer_list.Columns[4].HeaderText = "Telefon Numarası";
-            customer_list.Columns[5].HeaderText = "Adres";
+            customer_list.Columns[5].HeaderText = "Firma Adı";
             customer_list.Columns[6].HeaderText = "Kayıt Tarihi";
+            customer_list.Columns[7].HeaderText = "IDW";
 
             customer_list.Columns[0].Visible = false;
+            customer_list.Columns[7].Visible = false;
+            customer_list.AllowUserToAddRows = false;
 
            // SqlClass sqlCon = new SqlClass();
             //sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
 
 
             //sqlCon.ConnectSql();
-            String sqlTotal2 = "SELECT CC.ODEMETIPI,SUM(CC.TL) AS TL, SUM(CC.EURO) AS EURO, SUM(CC.DOLAR) AS DOLAR FROM customer_case cc WHERE 1 GROUP BY CC.ODEMETIPI";
+            String sqlTotal2 = "SELECT CC.ODEMETIPI,SUM(CC.TL) AS TL, SUM(CC.EURO) AS EURO, SUM(CC.DOLAR) AS DOLAR FROM customer_case cc WHERE DATE BETWEEN '"
+                                + yr3 + "-" + m3 + "-" + d3 + "' AND " + "'" + yr3 + "-" + m3 + "-" + d4 + "'" + " GROUP BY CC.ODEMETIPI";
             //if (DataGridList.Name == "dtgridSalesList")
             //    sql = sql + " ORDER BY  SALE_CODE";
             DataTable dtTotal2 = new DataTable();
@@ -123,8 +142,11 @@ namespace WindowsFormsApplication12
 
             grdCase_Total.Columns[0].HeaderText = "Ödeme Tipi";
             grdCase_Total.Columns[1].HeaderText = "TL";
+            grdCase_Total.Columns[1].DefaultCellStyle.Format = "N";
             grdCase_Total.Columns[2].HeaderText = "€";
+            grdCase_Total.Columns[2].DefaultCellStyle.Format = "N";
             grdCase_Total.Columns[3].HeaderText = "$";
+            grdCase_Total.Columns[3].DefaultCellStyle.Format = "N";
 
           //  customer_list.Columns[0].Visible = false;
             
@@ -306,6 +328,15 @@ namespace WindowsFormsApplication12
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string yr, m, d;
+
+            yr = DateTime.Now.Year.ToString();
+            m = DateTime.Now.Month.ToString();
+            d = DateTime.Now.Day.ToString();
+
+            int d4 = Convert.ToInt32(d) + 1;
+            
+
             DialogResult result = new DialogResult();
 
             result = MessageBox.Show("Veriyi güncellemek istiyormusunuz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -324,7 +355,8 @@ namespace WindowsFormsApplication12
                     if (baglanti.State == ConnectionState.Closed)
                       baglanti.Open();
 
-                    String sqlTotal2 = "SELECT CC.ODEMETIPI,SUM(CC.TL) AS TL, SUM(CC.EURO) AS EURO, SUM(CC.DOLAR) AS DOLAR FROM customer_case cc WHERE 1 GROUP BY CC.ODEMETIPI";
+                    String sqlTotal2 = "SELECT CC.ODEMETIPI,SUM(CC.TL) AS TL, SUM(CC.EURO) AS EURO, SUM(CC.DOLAR) AS DOLAR FROM customer_case cc WHERE DATE BETWEEN '"
+                                + yr + "-" + m + "-" + d + "' AND " + "'" + yr + "-" + m + "-" + d4 + "'" + "GROUP BY CC.ODEMETIPI";
                     //if (DataGridList.Name == "dtgridSalesList")
                     //    sql = sql + " ORDER BY  SALE_CODE";
                     DataTable dtTotal2 = new DataTable();
@@ -343,8 +375,11 @@ namespace WindowsFormsApplication12
 
                     grdCase_Total.Columns[0].HeaderText = "Ödeme Tipi";
                     grdCase_Total.Columns[1].HeaderText = "TL";
+                    grdCase_Total.Columns[1].DefaultCellStyle.Format = "N";
                     grdCase_Total.Columns[2].HeaderText = "€";
-                    grdCase_Total.Columns[3].HeaderText = "$";   
+                    grdCase_Total.Columns[2].DefaultCellStyle.Format = "N";
+                    grdCase_Total.Columns[3].HeaderText = "$";
+                    grdCase_Total.Columns[3].DefaultCellStyle.Format = "N";
 
 
 
@@ -404,15 +439,111 @@ namespace WindowsFormsApplication12
             grdCusCasDetail.DataSource = dataSet.Tables[0];//dtTotal3;
             baglanti.Close();
 
+            grdCusCasDetail.Columns[0].HeaderText = "ID";
+            grdCusCasDetail.Columns[1].HeaderText = "CL_ID";
+            grdCusCasDetail.Columns[2].HeaderText = "TL";
+            grdCusCasDetail.Columns[2].DefaultCellStyle.Format = "N";
+            grdCusCasDetail.Columns[3].HeaderText = "€";
+            grdCusCasDetail.Columns[3].DefaultCellStyle.Format = "N";
+            grdCusCasDetail.Columns[4].HeaderText = "$";
+            grdCusCasDetail.Columns[4].DefaultCellStyle.Format = "N";
+            grdCusCasDetail.Columns[5].HeaderText = "Ödeme Tipi";
+            grdCusCasDetail.Columns[6].HeaderText = "Kayıt Tarihi";
+           
+
+            grdCusCasDetail.Columns[0].Visible = false;
+            grdCusCasDetail.Columns[1].Visible = false;
+        }
+
+        private void btnQueryStock_Click_1(object sender, EventArgs e)
+        {
+            string yr, m, d, yr2, m2, d2;
+
+            yr = dateTimePicker1.Value.Year.ToString();
+            m = dateTimePicker1.Value.Month.ToString();
+            d = dateTimePicker1.Value.Day.ToString();
+            yr2 = dateTimePicker2.Value.Year.ToString();
+            m2 = dateTimePicker2.Value.Month.ToString();
+            d2 = dateTimePicker2.Value.Day.ToString();
+
+            SqlClass sqlCon = new SqlClass();
+   
+            sqlCon.ConnectSql();
+            String sql = "SELECT cl.*,cl.ID AS CL_ID FROM customer_list CL Where CL.DATE BETWEEN '" + yr + "-" + m + "-" + d + "' AND " + "'" + yr2 + "-" + m2 + "-" + d2 + "'";
+
+            DataTable dt = new DataTable();
+
+
+            adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand();
+
+            command.CommandText = sql;
+            command.Connection = baglanti;
+            adapter.SelectCommand = command;
+
+            //baglanti.Open();
+            adapter.Fill(dt);
+            customer_list.DataSource = dt;
+            baglanti.Close();
+
+            customer_list.Columns[0].HeaderText = "ID";
+            customer_list.Columns[1].HeaderText = "Adı";
+            customer_list.Columns[2].HeaderText = "Soyadı";
+            customer_list.Columns[3].HeaderText = "Firma Adı";
+            customer_list.Columns[4].HeaderText = "Telefon Numarası";
+            customer_list.Columns[5].HeaderText = "Adres";
+            customer_list.Columns[6].HeaderText = "Kayıt Tarihi";
+            customer_list.Columns[7].HeaderText = "IDW";
+
+            customer_list.Columns[0].Visible = false;
+            customer_list.Columns[7].Visible = false;
+            customer_list.AllowUserToAddRows = false;
+
+
+            String lvCL_ID;
+            //dataSet = null;
+            try
+            {
+                lvCL_ID = customer_list.CurrentRow.Cells["ID"].Value.ToString();
+            }
+            catch
+            {
+                lvCL_ID = "0";
+            }
+
+      
+            String sqlTotal3 = "SELECT * FROM customer_case CC where CC.CL_ID = " + "'" + lvCL_ID + "'";
+
+            DataTable dtTotal3 = new DataTable();
+            dataSet = new DataSet();
+
+            adapter = new MySqlDataAdapter();
+            MySqlCommand commandTotal3 = new MySqlCommand();
+
+            commandTotal3.CommandText = sqlTotal3;
+            commandTotal3.Connection = baglanti;
+            adapter.SelectCommand = commandTotal3;
+            if (baglanti.State == ConnectionState.Closed)
+                baglanti.Open();
+
+            adapter.Fill(dtTotal3);
+            adapter.Fill(dataSet, "customer_case");
+            grdCusCasDetail.DataSource = dataSet.Tables[0];//dtTotal3;
+            baglanti.Close();
+
             grdCusCasDetail.Columns[0].HeaderText = "CL_ID";
             grdCusCasDetail.Columns[1].HeaderText = "TL";
+            grdCusCasDetail.Columns[1].DefaultCellStyle.Format = "N";
             grdCusCasDetail.Columns[2].HeaderText = "€";
+            grdCusCasDetail.Columns[2].DefaultCellStyle.Format = "N";
             grdCusCasDetail.Columns[3].HeaderText = "$";
+            grdCusCasDetail.Columns[3].DefaultCellStyle.Format = "N";
             grdCusCasDetail.Columns[4].HeaderText = "Ödeme Tipi";
             grdCusCasDetail.Columns[5].HeaderText = "ID";
 
             grdCusCasDetail.Columns[0].Visible = false;
             grdCusCasDetail.Columns[5].Visible = false;
+           
         }
     }
 }

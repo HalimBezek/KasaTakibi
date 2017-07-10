@@ -83,6 +83,7 @@
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Bitiş Tarihi :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -92,6 +93,7 @@
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Başlangıç Tarihi :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dateTimePicker2
             // 
@@ -99,6 +101,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(151, 20);
             this.dateTimePicker2.TabIndex = 6;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -107,6 +110,7 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
             this.dateTimePicker1.TabIndex = 5;
             this.dateTimePicker1.Value = new System.DateTime(2017, 4, 14, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btnQueryStock
             // 

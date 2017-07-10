@@ -189,6 +189,7 @@
             this.tcPrices.Size = new System.Drawing.Size(89, 20);
             this.tcPrices.TabIndex = 5;
             this.tcPrices.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tcPrices_KeyPress);
+            this.tcPrices.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tcPrices_KeyUp);
             // 
             // label5
             // 
@@ -467,6 +468,7 @@
             this.tbPrice.Size = new System.Drawing.Size(74, 20);
             this.tbPrice.TabIndex = 4;
             this.tbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPrice_KeyPress);
+            this.tbPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbPrice_KeyUp);
             // 
             // tbSalePiece
             // 
@@ -562,6 +564,7 @@
             // 
             // lblSave3
             // 
+            this.lblSave3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSave3.AutoSize = true;
             this.lblSave3.Location = new System.Drawing.Point(879, 22);
             this.lblSave3.Name = "lblSave3";
@@ -633,6 +636,7 @@
             this.tbPricePay.TabIndex = 3;
             this.tbPricePay.TextChanged += new System.EventHandler(this.tbPricePay_TextChanged);
             this.tbPricePay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPricePay_KeyPress);
+            this.tbPricePay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbPricePay_KeyUp);
             // 
             // label12
             // 

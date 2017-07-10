@@ -36,7 +36,7 @@ namespace WindowsFormsApplication12
 
             build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "";
+            build.Password = "12345678";
             build.Database = "case_follow";
             build.Port = 3306;
 
@@ -55,9 +55,16 @@ namespace WindowsFormsApplication12
             dtgridPaymentList.Columns[0].HeaderText = "Numarası";
             dtgridPaymentList.Columns[1].HeaderText = "Ödeme Şekli";
             dtgridPaymentList.Columns[2].HeaderText = "Ödeme Tipi";
+
             dtgridPaymentList.Columns[3].HeaderText = "TL";
+            dtgridPaymentList.Columns[3].DefaultCellStyle.Format = "N";
+
             dtgridPaymentList.Columns[4].HeaderText = "Euro";
+            dtgridPaymentList.Columns[4].DefaultCellStyle.Format = "N";
+
             dtgridPaymentList.Columns[5].HeaderText = "Dolar";
+            dtgridPaymentList.Columns[5].DefaultCellStyle.Format ="N";
+
             dtgridPaymentList.Columns[6].HeaderText = "Müşteri_id";
             dtgridPaymentList.Columns[7].HeaderText = "Müşteri";
             dtgridPaymentList.Columns[8].HeaderText = "Tarih";
@@ -106,14 +113,37 @@ namespace WindowsFormsApplication12
             dtgridPaymentList.Columns[1].HeaderText = "Ödeme Şekli";
             dtgridPaymentList.Columns[2].HeaderText = "Ödeme Tipi";
             dtgridPaymentList.Columns[3].HeaderText = "TL";
+            dtgridPaymentList.Columns[3].DefaultCellStyle.Format = "N";
             dtgridPaymentList.Columns[4].HeaderText = "Euro";
+            dtgridPaymentList.Columns[4].DefaultCellStyle.Format = "N";
             dtgridPaymentList.Columns[5].HeaderText = "Dolar";
+            dtgridPaymentList.Columns[5].DefaultCellStyle.Format = "N";
             dtgridPaymentList.Columns[6].HeaderText = "Müşteri_id";
             dtgridPaymentList.Columns[7].HeaderText = "Müşteri";
             dtgridPaymentList.Columns[8].HeaderText = "Tarih";
 
             dtgridPaymentList.Columns[0].Visible = false;
             dtgridPaymentList.Columns[6].Visible = false;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

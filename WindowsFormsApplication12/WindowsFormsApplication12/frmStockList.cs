@@ -36,7 +36,7 @@ namespace WindowsFormsApplication12
 
             build.Server = "127.0.0.1";//	localhost
             build.UserID = "root";
-            build.Password = "";
+            build.Password = "12345678";
             build.Database = "case_follow";
             build.Port = 3306;
 
@@ -55,7 +55,7 @@ namespace WindowsFormsApplication12
             dtgrdStockList.Columns[0].HeaderText = "Numarası";
             dtgrdStockList.Columns[1].HeaderText = "Stok Adı";
             dtgrdStockList.Columns[2].HeaderText = "Stok Kodu";
-         //   dtgrdStockList.Columns[3].HeaderText = "Kaç Adet";
+            dtgrdStockList.Columns[3].HeaderText = "Kayıt Tarihi";
          ///   dtgrdStockList.Columns[4].HeaderText = "Alan Firma/Kişi";
           //  dtgrdStockList.Columns[5].HeaderText = "Fiyatı";
          //   dtgrdStockList.Columns[6].HeaderText = "Ödeme Cinsi";
@@ -206,18 +206,23 @@ namespace WindowsFormsApplication12
             dtgrdDetail.Columns[2].HeaderText = "detayId";
             dtgrdDetail.Columns[3].HeaderText = "CL_ID";
             dtgrdDetail.Columns[4].HeaderText = "TL";
+            dtgrdDetail.Columns[4].DefaultCellStyle.Format = "N";
             dtgrdDetail.Columns[5].HeaderText = "Dolar";
+            dtgrdDetail.Columns[5].DefaultCellStyle.Format = "N";
             dtgrdDetail.Columns[6].HeaderText = "Euro";
-            dtgrdDetail.Columns[7].HeaderText = "Kaç Adet?";
-            dtgrdDetail.Columns[8].HeaderText = "Ödeme Tipi";
+            dtgrdDetail.Columns[6].DefaultCellStyle.Format = "N";
+            dtgrdDetail.Columns[7].HeaderText = "Ödeme Tipi";
+            dtgrdDetail.Columns[8].HeaderText = "Kaç Adet?";
             dtgrdDetail.Columns[9].HeaderText = "Kişi/Firma Adı";
             dtgrdDetail.Columns[10].HeaderText = "Stok Kodu";
             dtgrdDetail.Columns[11].HeaderText = "Tarih";
+            dtgrdDetail.Columns[12].HeaderText = "SL_ID";
 
             dtgrdDetail.Columns[2].Visible = false;
             dtgrdDetail.Columns[3].Visible = false;
             dtgrdDetail.Columns[8].Visible = false;
             dtgrdDetail.Columns[9].Visible = false;
+            dtgrdDetail.Columns[12].Visible = false;
 
         }
 
