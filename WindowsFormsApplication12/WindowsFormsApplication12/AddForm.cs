@@ -73,10 +73,6 @@ namespace WindowsFormsApplication12
             txMoney = "";
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -289,45 +285,10 @@ namespace WindowsFormsApplication12
                 
                 String bag;
                 String textt, textinsert;
-                //MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
 
-                //build.Server = "localhost";
-                //build.UserID = "root";
-                //build.Password = "12345678";
-                //build.Database = "case_follow";
-                //build.Port = 3306;
-
-
-                //bag = build.ToString();
-                //baglanti = new MySqlConnection(bag);
 
                 baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
 
-
-               /* String sql3 = "SELECT cl.TL FROM customer_list cl WHERE CL.ID=" + id ;
-                String sql4 = "SELECT cl.DOLAR FROM customer_list cl WHERE CL.ID=" + id;
-                String sql5 = "SELECT cl.EURO FROM customer_list cl WHERE CL.ID= " + id;
-                MySqlCommand komut3 = new MySqlCommand(sql3, baglanti);
-                String SonucTL = komut3.ExecuteScalar().ToString();
-                MySqlCommand komut4 = new MySqlCommand(sql4, baglanti);
-                String SonucDOLAR = komut4.ExecuteScalar().ToString();
-                MySqlCommand komut5 = new MySqlCommand(sql5, baglanti);
-                String SonucEURO = komut5.ExecuteScalar().ToString();
-                komut3.ExecuteNonQuery();//
-                lvT = (lvT * Convert.ToInt32(tbSalePiece.Text)) + Convert.ToInt32(SonucTL);
-                lvE = (lvE * Convert.ToInt32(tbSalePiece.Text))  + Convert.ToInt32(SonucEURO);
-                lvD = (lvD * Convert.ToInt32(tbSalePiece.Text)) + Convert.ToInt32(SonucDOLAR);*/
-                
-                
-              //  textt = "UPDATE customer_list SET TL=" + lvT + ", DOLAR=" + lvD + ", EURO=" + lvE + ", ODEMETIPI='" + cbType.Text + "'  WHERE ID =" + Convert.ToInt32(id);
-
-               // string sql2 = textt;
-
-               // MySqlCommand komut2 = new MySqlCommand(sql2, baglanti);
-
-                //komut2.ExecuteNonQuery();//
-
-                // "UPDATE customer_list SET TL=" + lvT + ", DOLAR=" + lvD + ", EURO=" + lvE + ", ODEMETIPI='" + cbType.Text + "'  WHERE ID =" + Convert.ToInt32(id);//
              
                textinsert = "INSERT INTO daily_sale_case(CL_ID, SL_ID, TL, DOLAR, EURO, PIECES, ODEMETIPI) VALUES (" + Convert.ToInt32(userid) + ","+ Convert.ToInt32(stocklist_id) +
                             "," + lvT + " ," + lvD + " ," + lvE + " ," + Convert.ToInt32(tbSalePiece.Text) + " ," + "'" + cbType.Text + "'" + ")";
@@ -444,52 +405,9 @@ namespace WindowsFormsApplication12
 
                 String bag;
                 String textt, textinsert2;
-                //MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
-
-                //build.Server = "localhost";
-                //build.UserID = "root";
-                //build.Password = "12345678";
-                //build.Database = "case_follow";
-                //build.Port = 3306;
-
-
-                //bag = build.ToString();
-                //baglanti = new MySqlConnection(bag);
 
                 baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
 
-                /*
-                String sql3 = "SELECT cl.TL FROM customer_list cl WHERE CL.ID=" + userid;
-                String sql4 = "SELECT cl.DOLAR FROM customer_list cl WHERE CL.ID=" + userid;
-                String sql5 = "SELECT cl.EURO FROM customer_list cl WHERE CL.ID= " + userid;
-                MySqlCommand komut3 = new MySqlCommand(sql3, baglanti);
-                String SonucTL = komut3.ExecuteScalar().ToString();
-                MySqlCommand komut4 = new MySqlCommand(sql4, baglanti);
-                String SonucDOLAR = komut4.ExecuteScalar().ToString();
-                MySqlCommand komut5 = new MySqlCommand(sql5, baglanti);
-                String SonucEURO = komut5.ExecuteScalar().ToString();
-                komut3.ExecuteNonQuery();//
-                if (cbTakePay.Checked)
-                {
-                    lvT = lvT + Convert.ToInt32(SonucTL);
-                    lvE = lvE + Convert.ToInt32(SonucEURO);
-                    lvD = lvD + Convert.ToInt32(SonucDOLAR);
-                }
-                else
-                {
-                    lvT = lvT - Convert.ToInt32(SonucTL);
-                    lvE = lvE - Convert.ToInt32(SonucEURO);
-                    lvD = lvD - Convert.ToInt32(SonucDOLAR);
-                }
-
-                textt = "UPDATE customer_list SET TL=" + lvT + ", DOLAR=" + lvD + ", EURO=" + lvE + ", ODEMETIPI='" + cbType.Text + "'  WHERE ID =" + Convert.ToInt32(userid);
-
-                string sql2 = textt;
-
-                MySqlCommand komut2 = new MySqlCommand(sql2, baglanti);
-
-                komut2.ExecuteNonQuery();//
-                */
 
                 string sql = "INSERT INTO payments (PAY_TYPE, PAY_CARNEL, TL, EURO, DOLAR, CL_ID, CUSTOMER) VALUES ('" + PaymentType + "','" +
                           cb2Type.Text + "','" + lvT + "','" + lvE + "','" + lvD + "','" + Convert.ToInt64(userid) + "','" + lgvCustumer + "')";
@@ -624,14 +542,6 @@ namespace WindowsFormsApplication12
 
             DataSet dSet = new DataSet();
 
-
-            //build.Server = "localhost";
-            //build.UserID = "root";
-            //build.Password = "12345678";
-            //build.Database = "case_follow";
-            //build.Port = 3306;
-            //
-
             DataGridView stock_list = new DataGridView();
             stock_list.Name = "stock_list";
             DataGridView customer_list = new DataGridView();
@@ -664,17 +574,6 @@ namespace WindowsFormsApplication12
             stock_list.DataSource = dtable2;
             baglanti.Close();
 
-            //foreach (DataRow dr in dSet.Tables[0].Rows)
-            //{
-            //    tbSalePiece.Text = dr[0].ToString() + " " + dr[1].ToString();
-            //}
-            
-           // sqlCon.ListData(stock_list, DateTime.Now, DateTime.Now);
-           //cbStockCode.DataSource = stock_list.DataSource;
-           //cbStockCode.DisplayMember = "NAME";
-           //cbStockCode.DisplayMember = cbStockCode.DisplayMember;
-
-            
             String sql = "SELECT CONCAT(NAME, ' ', SURNAME) AS NAME, ID FROM customer_list ";
             DataTable dtable = new DataTable();
 
@@ -690,11 +589,6 @@ namespace WindowsFormsApplication12
             adapter.Fill(dSet);
             customer_list.DataSource = dtable;
             baglanti.Close();
-            //cbCustumerOto2.DataSource = customer_list.DataSource;
-            //cbCustumerOto2.DisplayMember = "NAME";
-            //cbIDtutar1.DataSource = customer_list.DataSource;
-            //cbIDtutar1.DisplayMember = "ID";
-          //  sqlCon.ListData(customer_list, DateTime.Now, DateTime.Now);
 
             String sql3 = "SELECT CONCAT(NAME, ' ', SURNAME) AS NAME, ID FROM customer_list ";
             DataTable dtable3 = new DataTable();
@@ -712,10 +606,7 @@ namespace WindowsFormsApplication12
             customer_list.DataSource = dtable3;
             baglanti.Close();
             //cbCustomerOto212.DataSource = customer_list.DataSource;
-            //cbCustomerOto212.DisplayMember = "NAME"; //
-         
-//            cbIDtutar.DataSource = customer_list.DataSource;
-  //          cbIDtutar.DisplayMember = "ID";
+
 
 
             String sql4 = "SELECT CONCAT(NAME, ' ', SURNAME) AS NAME, ID FROM customer_list ";
@@ -733,11 +624,7 @@ namespace WindowsFormsApplication12
             adapter4.Fill(dSet);
             customer_list.DataSource = dtable4;
             baglanti.Close();
-            //tbCustomerOto2.DataSource = customer_list.DataSource;
-            //tbCustomerOto2.DisplayMember = "NAME"; //
 
-            //cbIDCustom.DataSource = customer_list.DataSource;
-            //cbIDCustom.DisplayMember = "ID";
 
         }
 
@@ -2496,10 +2383,7 @@ namespace WindowsFormsApplication12
             raporum.Add(table3);
             raporum.Add(table4);
             raporum.Add(table);
-           //+ raporum.Add(table2);
-           // raporum.Add(table2_1);
 
-            //raporum.Add(table);
             
             raporum.Close();
             MessageBox.Show("Fatura pdf i oluşturuldu");

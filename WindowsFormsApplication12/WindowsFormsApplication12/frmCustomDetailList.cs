@@ -29,9 +29,7 @@ namespace WindowsFormsApplication12
         string cl_id;
 
         MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
-        //  String sql = "SELECT * FROM customer_list "; // +DataListesi;
-        //if (DataGridList.Name == "dtgridSalesList")
-        //    sql = sql + " ORDER BY  SALE_CODE";
+
         DataTable dt = new DataTable();
         DataSet dataSet;
         MySqlDataAdapter adapter;
@@ -73,15 +71,6 @@ namespace WindowsFormsApplication12
             Show();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -198,9 +187,7 @@ namespace WindowsFormsApplication12
 
             }
                 
-            
-            //if (DataGridList.Name == "dtgridSalesList")
-            //    sql = sql + " ORDER BY  SALE_CODE";
+
             DataTable dt2 = new DataTable();
 
             MySqlDataAdapter adapter2 = new MySqlDataAdapter();

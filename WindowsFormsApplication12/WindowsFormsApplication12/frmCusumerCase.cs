@@ -155,81 +155,7 @@ namespace WindowsFormsApplication12
 
             String id;
             int lvD=0;int lvT=0;int lvE=0;
-                  
-                
-                
-                //MySqlConnectionStringBuilder build = new MySqlConnectionStringBuilder();
-
-                //build.Server = "localhost";
-                //build.UserID = "root";
-                //build.Password = "12345678";
-                //build.Database = "case_follow";
-                //build.Port = 3306;
-
-
-                //bag = build.ToString();
-                //baglanti = new MySqlConnection(bag);
-
-                //baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
-
-               /* //Nakit
-    Kredi Kartı
-    Veresiye*/
-
-               
-/*
-                String sql3 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Nakit'";
-                String sql4 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Nakit'";
-                String sql5 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Nakit'";
-                String sql6 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Kredi Kartı'";
-                String sql7 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Kredi Kartı'";
-                String sql8 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Kredi Kartı'";
-                String sql9 = "SELECT SUM(cl.TL) FROM customer_list cl WHERE cl.ODEMETIPI= 'Veresiye'";
-                String sql11 = "SELECT SUM(cl.DOLAR) FROM customer_list cl WHERE cl.ODEMETIPI='Veresiye'";
-                String sql12 = "SELECT SUM(cl.EURO) FROM customer_list cl WHERE cl.ODEMETIPI= 'Veresiye'";
-                MySqlCommand komut3 = new MySqlCommand(sql3, baglanti);
-                String SonucTL = komut3.ExecuteScalar().ToString();
-                MySqlCommand komut4 = new MySqlCommand(sql4, baglanti);
-                String SonucDOLAR = komut4.ExecuteScalar().ToString();
-                MySqlCommand komut5 = new MySqlCommand(sql5, baglanti);
-                String SonucEURO = komut5.ExecuteScalar().ToString();
-                MySqlCommand komut6 = new MySqlCommand(sql6, baglanti);
-                String SonucKKTL = komut6.ExecuteScalar().ToString();
-                MySqlCommand komut7 = new MySqlCommand(sql7, baglanti);
-                String SonucKKDOLAR = komut7.ExecuteScalar().ToString();
-                MySqlCommand komut8 = new MySqlCommand(sql8, baglanti);
-                String SonucKKEURO = komut8.ExecuteScalar().ToString();
-                MySqlCommand komut9 = new MySqlCommand(sql9, baglanti);
-                String SonucVTL = komut9.ExecuteScalar().ToString();
-                MySqlCommand komut10 = new MySqlCommand(sql11, baglanti);
-                String SonucVDOLAR = komut10.ExecuteScalar().ToString();
-                MySqlCommand komut11 = new MySqlCommand(sql12, baglanti);
-                String SonucVEURO = komut11.ExecuteScalar().ToString();
-                komut3.ExecuteNonQuery();//
-                textBoxNTL.Text = SonucTL;
-                textBoxNDOLAR.Text = SonucDOLAR;
-                textBoxNEURO.Text = SonucEURO;
-                textBoxKKTL.Text = SonucKKTL;
-                textBoxKKDOLAR.Text = SonucKKDOLAR;
-                textBoxKKEURO.Text = SonucKKEURO;
-                textBoxVTL.Text = SonucVTL;
-                textBoxVDOLAR.Text = SonucVDOLAR;
-                textBoxVEURO.Text = SonucVEURO;
-
-
-                String sql2 = "SELECT * FROM customer_list ";
-
-                command.CommandText = sql2;
-                command.Connection = baglanti;
-                adapter.SelectCommand = command;
-
-                // baglanti.Open();
-                adapter.Fill(dt);
-                adapter.Fill(ds, "customer_list");
-
-                customer_list.DataSource = ds.Tables[0];// dt;
-                baglanti.Close();*/
-
+     
             }
 
         private void btnQueryStock_Click(object sender, EventArgs e)
@@ -278,17 +204,6 @@ namespace WindowsFormsApplication12
 
             //customer_list.Columns[0].Visible = false;
 
-        }
-
-
-        private void customer_list_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-          //  String a = customer_list.item(0).
-           // String a = customer_list.         // textBo            //textBox3.Text = ds.Tables["customer_list"].Rows[e.RowIndex]["SURNAME"].ToString();
-            //textBox4.Text = ds.Tables["customer_list"].Rows[e.RowIndex]["DOLAR"].ToString();
-            //textBox5.Text = ds.Tables["customer_list"].Rows[e.RowIndex]["TL"].ToString();
-          //  textBox6.Text = ds.Tables["tablo"].Rows[e.RowIndex]["final"].ToString();
-            //MessageBox.Show("cursor change  change3", "cursor changeEnter");
         }
 
      
@@ -409,15 +324,6 @@ namespace WindowsFormsApplication12
                 lvCL_ID = "0";
             }
 
-         /*   SqlClass sqlCon = new SqlClass();
-
-            String bag;
-            DataSet dSet = new DataSet();
-
-
-
-            SqlClass connect = new SqlClass();
-            connect.ConnectSql();*/
 
             String sqlTotal3 = "SELECT * FROM customer_case CC where CC.CL_ID = " + "'"+ lvCL_ID + "'";
             //if (DataGridList.Name == "dtgridSalesList")

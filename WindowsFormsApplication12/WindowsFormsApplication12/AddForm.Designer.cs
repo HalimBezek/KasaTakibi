@@ -244,7 +244,6 @@
             this.cbCinsi.TabIndex = 6;
             this.cbCinsi.Text = "TL";
             this.cbCinsi.ValueMember = "1";
-            this.cbCinsi.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -659,7 +658,7 @@
             this.cb2Cinsi.Size = new System.Drawing.Size(43, 21);
             this.cb2Cinsi.TabIndex = 2;
             this.cb2Cinsi.Text = "TL";
-            this.cb2Cinsi.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+
             // 
             // label11
             // 

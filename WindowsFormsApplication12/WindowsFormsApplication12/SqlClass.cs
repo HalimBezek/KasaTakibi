@@ -81,9 +81,7 @@ namespace WindowsFormsApplication12
             d = DateTime.Now.Date.Day.ToString();
             DTIME =DateTime.Now.Date;
             t = yr + "-" + m + "-" + d;
-            //dt = DTIME.ToString("yyyy.mm.dd");
-        //   DTIME = DateTime.ParseExact(dt, @"yyyy.mm.dd",); //Convert.ToDateTime(dt);
-          //  DTIME = Convert.ToDateTime(t, "yyyy-mm-dd");
+
             ConnectSql();
             baglanti.Open();//	ID	NAME STOK ADI	CODE STOK KODU	PIECE KAÇ ADET	CUSTOMER KIM ALDI	BRAND URUN MARKASI
 
@@ -124,10 +122,7 @@ namespace WindowsFormsApplication12
         public void AddSale(String StockCode, int SalePiece, int Price, String Type, String Cinsi, String Custumer)
         {
             ConnectSql();
-            baglanti.Open();//	ID	SALE_CODE SATILAN URUN KODU	PRICE FIYATI	PAY_CARNEL ODEME TIPI	ODEMECINSI PIECES 
-         ///   DateTime date = DateTime.Now;
-           // string dateString = date.ToString();
-           // DateTime a = Convert.ToDateTime(dateString);
+            baglanti.Open();
 
             string sql = "INSERT INTO daily_sale (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER) VALUES ('" + StockCode + "','" + Price +
                                                "','" + Type + "','" + Cinsi + "','" + SalePiece + "', '" + Custumer + "') ";// + Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-mm-dd")) + "')";
@@ -137,25 +132,7 @@ namespace WindowsFormsApplication12
 
 
             komut.ExecuteNonQuery();
-            ////
-            //string sql2 = "UPDATE customer_list SET TL=@TL ,$=@$ ,€=@€ ,NAKIT=@NAKIT ,K_KARTI=@K_KARTI  ,VERESIYE=@VERESIYE  WHERE ID =@ID";
-            
-            //// "INSERT INTO customer_list (SALE_CODE, PRICE, PAY_CARNEL, ODEMECINSI, PIECES,CUSTOMER,DATE) VALUES ('" + StockCode + "','" + Price +
-            //                                   //"','" + Type + "','" + Cinsi + "','" + SalePiece + "', '" + Custumer + "', '" + dateString + "')";
-
-
-            //MySqlCommand komut2 = new MySqlCommand(sql, baglanti);
-
-            //komut2.Parameters.AddWithValue("@TL", isTenured);
-            //komut2.Parameters.AddWithValue("@$", qualifications);
-            //komut2.Parameters.AddWithValue("@€", previousEmployment);
-            //komut2.Parameters.AddWithValue("@NAKIT ", YourIdValue);
-            //komut2.Parameters.AddWithValue("@K_KARTI", qualifications);
-            //komut2.Parameters.AddWithValue("@VERESIYE", previousEmployment);
-            //komut2.Parameters.AddWithValue("@ID", YourIdValue);
-
-            //komut2.ExecuteNonQuery();
-
+    
             baglanti.Close();
 
 
